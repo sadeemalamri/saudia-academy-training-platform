@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>User Settings Page</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../CSS/Settings.css" />
+  <link rel="stylesheet" href="../CSS/reset.css">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <div class="dashboard" id="dashboard">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo-box">
+        <img src="../images/logo.png" class="side-logo" alt="Saudia Academy">
+
+        <button class="sidebar-close" id="sidebarClose" title="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <nav class="side-menu">
+        <a href="student-dashboard.html">
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="your-plan.html">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <span>Your Plan</span>
+        </a>
+
+        <a class="active" href="#">
+          <i class="fa-solid fa-gear"></i>
+          <span>Setting</span>
+        </a>
+
+        <a
+  href="loading.html"
+  class="menu-link"
+  id="logoutBtn"
+  data-logout
+>
+  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  <span>Log Out</span>
+</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle" title="Open menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <img src="../images/logo.png" class="topbar-logo" alt="Saudia Academy">
+        </div>
+
+        <div class="user">
+
+          <div class="notification-wrapper">
+            <button class="notification-btn" id="notificationBtn" type="button">
+              <i class="fa-regular fa-bell"></i>
+
+              <span class="notification-badge hidden" id="notificationBadge">0</span>
+            </button>
+
+            <div class="notification-dropdown" id="notificationDropdown">
+
+              <div class="notification-header">
+                <div>
+                  <h3>Notifications</h3>
+                  <p id="unreadText">No unread notifications</p>
+                </div>
+              </div>
+
+              <div class="notification-list" id="notificationList">
+                <p class="notification-empty">
+                  Loading notifications...
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="user-circle">
+            <i class="fa-regular fa-user"></i>
+          </div>
+
+          <span id="headerUserName">Loading...</span>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="content">
+
+        <div class="page-title">
+          <h1>My Profile</h1>
+        </div>
+
+        <div class="profile-card">
+
+          <div class="profile-body">
+
+            <!-- Left Profile Side -->
+            <div class="profile-left">
+              <div class="avatar-circle">
+                <i class="fa-solid fa-user"></i>
+              </div>
+            </div>
+
+            <!-- Right Form Side -->
+            <div class="profile-right">
+
+              <h2>Personal Information</h2>
+
+              <form class="profile-form" id="profileForm">
+
+                <div class="form-row">
+                  <label for="fullName">Full Name</label>
+
+                  <div class="input-with-icon">
+                    <input id="fullName" name="fullName" type="text" placeholder="Full name will appear here" readonly
+                      class="editable-field" />
+
+                    <i class="fa-solid fa-pen edit-icon" onclick="toggleEditField('fullName', this)" title="Edit"></i>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <label for="dob">Date of Birth</label>
+
+                  <div class="input-with-icon date-box">
+                    <input id="dob" name="dob" type="date" readonly class="editable-field" />
+
+                    <i class="fa-regular fa-calendar-days edit-icon calendar-icon" onclick="openDatePicker()"
+                      title="Select date"></i>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <label for="gender">Gender</label>
+
+                  <input id="gender" name="gender" type="text" placeholder="Gender will appear here" readonly
+                    class="locked-field" />
+                </div>
+
+                <div class="form-row">
+                  <label for="password">Password</label>
+
+                  <div class="input-with-icon">
+                    <input id="password" name="password" type="password" placeholder="Change password" readonly
+                      class="editable-field" />
+
+                    <i class="fa-solid fa-pen edit-icon" onclick="openPasswordModal()" title="Change password"></i>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <label for="phone">Phone Number</label>
+
+                  <div class="input-with-icon">
+                    <input id="phone" name="phone" type="text" placeholder="9665XXXXXXXX" maxlength="12" readonly
+                      class="editable-field" />
+
+                    <i class="fa-solid fa-pen edit-icon" onclick="toggleEditField('phone', this)" title="Edit"></i>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <label for="email">Email Address</label>
+
+                  <div class="input-with-icon">
+                    <input id="email" name="email" type="email" placeholder="example@email.com" readonly
+                      class="editable-field" />
+
+                    <i class="fa-solid fa-pen edit-icon" onclick="toggleEditField('email', this)" title="Edit"></i>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <label for="language">Language</label>
+
+                  <select id="language" name="language" class="language-select">
+                    <option value="english" selected>English</option>
+                    <option value="arabic">Arabic</option>
+                  </select>
+                </div>
+
+              </form>
+
+            </div>
+
+          </div>
+
+          <div class="button-area">
+            <button type="button" id="saveChangesBtn" class="save-btn">
+              Save Changes
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Change Password Modal -->
+  <div class="modal-overlay" id="passwordModal">
+    <div class="password-modal">
+
+      <button type="button" class="close-modal" onclick="closePasswordModal()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2>Change Password</h2>
+
+      <p class="modal-subtitle">
+        Please enter your current password and choose a new one.
+      </p>
+
+      <form class="password-form" id="passwordForm">
+
+        <div class="password-group">
+          <label for="currentPassword">Current Password</label>
+
+          <div class="password-input-box">
+            <input id="currentPassword" name="currentPassword" type="password" placeholder="Enter current password"
+              required />
+
+            <i class="fa-regular fa-eye-slash toggle-pass" onclick="togglePassword('currentPassword', this)"></i>
+          </div>
+        </div>
+
+        <div class="password-group">
+          <label for="newPassword">New Password</label>
+
+          <div class="password-input-box">
+            <input id="newPassword" name="newPassword" type="password" placeholder="Enter new password" required />
+
+            <i class="fa-regular fa-eye-slash toggle-pass" onclick="togglePassword('newPassword', this)"></i>
+          </div>
+        </div>
+
+        <div class="password-group">
+          <label for="confirmPassword">Confirm New Password</label>
+
+          <div class="password-input-box">
+            <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm new password"
+              required />
+
+            <i class="fa-regular fa-eye-slash toggle-pass" onclick="togglePassword('confirmPassword', this)"></i>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="button" class="cancel-btn" onclick="closePasswordModal()">
+            Cancel
+          </button>
+
+          <button type="submit" class="update-btn" id="updatePasswordBtn">
+            Update Password
+          </button>
+        </div>
+
+        <p id="passwordUpdateError" style="display:none;color:#c0392b;margin:8px 0 0;font-size:14px;"></p>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+  <script src="../JS/Settings.js"></script>
+
+</body>
+
+</html>

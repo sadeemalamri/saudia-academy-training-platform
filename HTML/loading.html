@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Loading</title>
+
+  <link
+    rel="stylesheet"
+    href="../CSS/reset.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="../CSS/loading.css"
+  />
+
+</head>
+
+<body>
+
+  <section
+    class="loading-screen"
+    aria-label="Loading"
+  >
+
+    <div class="circle circle-top"></div>
+
+    <div class="circle circle-bottom"></div>
+
+    <div class="line-pattern"></div>
+
+    <div class="wave wave-one"></div>
+
+    <div class="wave wave-two"></div>
+
+    <div class="center-content">
+
+      <img
+        src="../images/logo.png"
+        alt="Saudia Academy"
+        class="main-logo"
+      />
+
+      <div
+        class="loader"
+        aria-hidden="true"
+      ></div>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    window.addEventListener(
+      "load",
+      () => {
+
+        window.setTimeout(
+          () => {
+
+            window.location.replace(
+              "index.html"
+            );
+
+          },
+          1000
+        );
+
+      }
+    );
+
+  </script>
+
+</body>
+
+</html>

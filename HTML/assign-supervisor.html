@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Supervisors</title>
+
+  <link rel="stylesheet" href="../CSS/assign-supervisor.css" />
+  <link rel="stylesheet" href="../CSS/reset.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+
+<body>
+
+<div class="admin-dashboard" id="dashboard">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ================= Sidebar ================= -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="logo-box">
+      <img
+        src="../images/logo.png"
+        class="side-logo"
+        alt="Saudia Academy"
+      />
+
+      <button class="sidebar-close" id="sidebarClose" title="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <nav class="side-menu">
+
+      <a href="admin-dashboard.html" class="menu-link">
+        <i class="fa-solid fa-house"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="admin-applications.html" class="menu-link">
+        <i class="fa-solid fa-users"></i>
+        <span>Applications</span>
+      </a>
+
+      <a href="assign-supervisor.html" class="menu-link active">
+        <i class="fa-solid fa-user-tie"></i>
+        <span>Supervisors</span>
+      </a>
+
+      <a href="training-plans.html" class="menu-link">
+        <i class="fa-regular fa-calendar-check"></i>
+        <span>Training Plans</span>
+      </a>
+
+      <a href="admin-jobs.html" class="menu-link">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Jobs</span>
+      </a>
+
+      <a href="admin-settings.html" class="menu-link">
+        <i class="fa-solid fa-gear"></i>
+        <span>Settings</span>
+      </a>
+
+      <a href="loading.html" class="menu-link" id="logoutBtn" data-logout>
+  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  <span>Log Out</span>
+</a>
+
+    </nav>
+
+  </aside>
+
+  <!-- ================= Main ================= -->
+
+  <main class="main">
+
+    <!-- Topbar -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" title="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <img src="../images/logo.png" class="topbar-logo" alt="Saudia Academy">
+      </div>
+
+      <div class="top-actions">
+
+
+        <div class="admin-user">
+  <i class="fa-regular fa-circle-user"></i>
+  <span id="topbarAdminName">Admin</span>
+</div>
+
+      </div>
+
+    </header>
+
+    <!-- Content -->
+
+    <section class="content">
+
+      <div class="page-header">
+
+        <div>
+          <h1>Supervisors</h1>
+
+          <p>
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="add-btn"
+          id="openSupervisorModal"
+        >
+          <i class="fa-solid fa-plus"></i>
+          <span>Add Supervisor</span>
+        </button>
+
+      </div>
+
+      <!-- Supervisors List -->
+
+      <div class="list-card">
+
+        <div class="list-header">
+          <h2>Supervisors List</h2>
+        </div>
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Supervisor Name</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Assigned Students</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr class="empty-row">
+
+                <td colspan="6">
+
+                  <div class="empty-state">
+
+                    <i class="fa-regular fa-folder-open"></i>
+
+                    <h3>No Supervisors Added Yet</h3>
+
+                    <p>
+                      Once you add supervisors, they will appear in this table.
+                    </p>
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <div class="pagination" id="pagination"></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<!-- ================= Add Supervisor Modal ================= -->
+
+<div class="modal-overlay" id="supervisorModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>Add Supervisor</h2>
+
+      <button
+        type="button"
+        class="close-modal"
+        id="closeSupervisorModal"
+        aria-label="Close modal"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+    <div class="line"></div>
+
+    <form class="supervisor-form" id="supervisorForm">
+
+      <div class="form-row">
+
+        <div class="form-group">
+          <label for="supervisorName">Supervisor Name</label>
+
+          <input
+            id="supervisorName"
+            name="supervisorName"
+            type="text"
+            placeholder="Enter supervisor full name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="department">Department</label>
+
+          <input
+            id="department"
+            name="department"
+            type="text"
+            placeholder="Enter department"
+            required
+          />
+        </div>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+          <label for="supervisorEmail">Email</label>
+
+          <input
+            id="supervisorEmail"
+            name="supervisorEmail"
+            type="email"
+            placeholder="Enter supervisor email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="supervisorPhone">Phone Number</label>
+
+          <input
+            id="supervisorPhone"
+            name="supervisorPhone"
+            type="text"
+            placeholder="Enter phone number"
+          />
+        </div>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+          <label for="availability">Availability</label>
+
+          <input
+            id="availability"
+            name="availability"
+            type="text"
+            placeholder="Example: Sunday - Thursday, 9:00 AM - 3:00 PM"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="officeLocation">Office / Location</label>
+
+          <input
+            id="officeLocation"
+            name="officeLocation"
+            type="text"
+            placeholder="Enter office or location"
+          />
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          id="cancelSupervisorModal"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="save-btn"
+        >
+          <i class="fa-solid fa-check"></i>
+          <span>Save Supervisor</span>
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/assign-supervisor.js"></script>
+
+</body>
+</html>

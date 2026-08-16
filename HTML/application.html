@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Application Form</title>
+
+  <link rel="stylesheet" href="../CSS/application.css" />
+  <link rel="stylesheet" href="../CSS/reset.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  />
+</head>
+
+<body>
+
+<header class="app-header">
+
+  <img
+    src="../images/logo.png"
+    alt="Saudia Academy"
+    class="logo"
+  />
+
+</header>
+
+<main class="page">
+
+  <section class="title-section">
+
+    <h1>Application Form</h1>
+    <p>Step 1 of 4</p>
+
+  </section>
+
+  <section class="steps-card">
+
+    <div class="step active">
+
+      <div class="circle">1</div>
+      <span>Personal Info</span>
+
+    </div>
+
+    <div class="line"></div>
+
+    <div class="step">
+
+      <div class="circle">2</div>
+      <span>Academic Info</span>
+
+    </div>
+
+    <div class="line"></div>
+
+    <div class="step">
+
+      <div class="circle">3</div>
+      <span>Documents</span>
+
+    </div>
+
+    <div class="line"></div>
+
+    <div class="step">
+
+      <div class="circle">4</div>
+      <span>Review</span>
+
+    </div>
+
+  </section>
+
+  <section class="form-card">
+
+    <h2>Personal Information</h2>
+
+    <form id="personalForm">
+
+      <div class="form-grid">
+
+        <div class="field">
+
+          <label for="firstName">First Name</label>
+
+          <input
+            type="text"
+            id="firstName"
+            name="fname"
+            autocomplete="given-name"
+            placeholder="Enter your first name"
+            required
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label for="lastName">Last Name</label>
+
+          <input
+            type="text"
+            id="lastName"
+            name="lname"
+            autocomplete="family-name"
+            placeholder="Enter your last name"
+            required
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label for="nationalId">National ID</label>
+
+          <input
+            type="text"
+            id="nationalId"
+            name="nationalId"
+            autocomplete="off"
+            placeholder="Enter your National ID"
+            maxlength="10"
+            required
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label for="email">Email</label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            placeholder="Enter your email"
+            required
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label for="password">Password</label>
+
+          <div class="password-box">
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              autocomplete="new-password"
+              placeholder="Enter your password"
+              minlength="8"
+              required
+            />
+
+            <i
+              id="togglePassword"
+              class="fa-regular fa-eye-slash password-toggle"
+              title="Show password"
+            ></i>
+
+          </div>
+
+        </div>
+
+        <div class="field">
+
+          <label for="confirmPassword">Confirm Password</label>
+
+          <div class="password-box">
+
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              autocomplete="new-password"
+              placeholder="Confirm your password"
+              minlength="8"
+              required
+            />
+
+            <i
+              id="toggleConfirmPassword"
+              class="fa-regular fa-eye-slash password-toggle"
+              title="Show password"
+            ></i>
+
+          </div>
+
+        </div>
+
+        <div class="field">
+
+          <label for="dob">Date of Birth</label>
+
+          <div class="date-box">
+
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              autocomplete="bday"
+              required
+            />
+
+            <i
+              class="fa-regular fa-calendar-days calendar-icon"
+            ></i>
+
+          </div>
+
+        </div>
+
+        <div class="field">
+
+          <label>Gender</label>
+
+          <div class="radio-group">
+
+            <label>
+
+              <input
+                type="radio"
+                name="gender"
+                value="Female"
+                required
+              />
+
+              Female
+
+            </label>
+
+            <label>
+
+              <input
+                type="radio"
+                name="gender"
+                value="Male"
+                required
+              />
+
+              Male
+
+            </label>
+
+          </div>
+
+        </div>
+
+        <div class="field">
+
+          <label for="mobile">Mobile Number</label>
+
+          <input
+            type="text"
+            id="mobile"
+            name="mobile"
+            autocomplete="tel"
+            placeholder="966501234567"
+            maxlength="12"
+            required
+          />
+
+        </div>
+
+        <div class="field empty"></div>
+
+        <div class="field">
+
+          <label for="city">City</label>
+
+          <select
+            id="city"
+            name="city"
+            required
+          >
+
+            <option value="">Select your city</option>
+            <option value="Riyadh">Riyadh</option>
+            <option value="Jeddah">Jeddah</option>
+            <option value="Makkah">Makkah</option>
+            <option value="Madinah">Madinah</option>
+            <option value="Dammam">Dammam</option>
+            <option value="Khobar">Khobar</option>
+            <option value="Dhahran">Dhahran</option>
+            <option value="Taif">Taif</option>
+            <option value="Tabuk">Tabuk</option>
+            <option value="Abha">Abha</option>
+            <option value="Khamis Mushait">Khamis Mushait</option>
+            <option value="Jazan">Jazan</option>
+            <option value="Najran">Najran</option>
+            <option value="Hail">Hail</option>
+            <option value="Buraidah">Buraidah</option>
+            <option value="Unaizah">Unaizah</option>
+            <option value="Al Ahsa">Al Ahsa</option>
+            <option value="Yanbu">Yanbu</option>
+            <option value="Jubail">Jubail</option>
+            <option value="Al Baha">Al Baha</option>
+            <option value="Arar">Arar</option>
+            <option value="Sakaka">Sakaka</option>
+            <option value="Al Qurayyat">Al Qurayyat</option>
+            <option value="Other">Other</option>
+
+          </select>
+
+        </div>
+
+        <div
+          class="field"
+          id="otherCityField"
+          style="display: none;"
+        >
+
+          <label for="otherCity">Other City</label>
+
+          <input
+            type="text"
+            id="otherCity"
+            name="otherCity"
+            placeholder="Enter your city"
+          />
+
+        </div>
+
+      </div>
+
+      <p id="signupError" style="display:none;color:#c0392b;margin:8px 0;font-size:14px;">
+        <span id="signupErrorText"></span>
+        <a href="#" id="signupLogoutLink" style="color:#c0392b;font-weight:600;text-decoration:underline;display:none;">Log out</a>
+      </p>
+
+      <div class="form-nav">
+
+        <button
+          type="button"
+          class="next-btn"
+          id="nextBtn"
+        >
+
+          <span>Next</span>
+          <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/application.js"></script>
+
+</body>
+
+</html>

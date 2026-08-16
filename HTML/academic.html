@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academic Information</title>
+  
+  <link rel="stylesheet" href="../CSS/reset.css">
+  <link rel="stylesheet" href="../CSS/application.css" />
+  <link rel="stylesheet" href="../CSS/academic.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<header class="app-header">
+  <img src="../images/logo.png" alt="Saudia Academy" class="logo">
+</header>
+
+<main class="page">
+
+  <section class="title-section">
+    <h1>Application Form</h1>
+    <p>Step 2 of 4</p>
+  </section>
+
+  <section class="steps-card">
+    <div class="step active">
+      <div class="circle">1</div>
+      <span>Personal Info</span>
+    </div>
+
+    <div class="line active-line"></div>
+
+    <div class="step active">
+      <div class="circle">2</div>
+      <span>Academic Info</span>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="step">
+      <div class="circle">3</div>
+      <span>Documents</span>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="step">
+      <div class="circle">4</div>
+      <span>Review</span>
+    </div>
+  </section>
+
+  <section class="form-card">
+    <h2>Academic Information</h2>
+
+    <form id="academicForm">
+      <div class="form-grid academic-grid">
+
+    <div class="field">
+  <label>Program you're applying for<span class="required"></span></label>
+  <select id="programRequirement" name="programRequirement" required>
+    <option value="">Loading programs...</option>
+  </select>
+</div>
+
+<div class="field" id="otherProgramField" style="display:none;">
+  <label>Other Program</label>
+  <input type="text" id="otherProgram" name="otherProgram" placeholder="Enter the program/major you're applying for">
+</div>
+
+    <div class="field">
+  <label>University</label>
+  <select id="university" name="university" required>
+    <option value="">Select your university</option>
+    <option>University of Jeddah</option>
+    <option>King Abdulaziz University</option>
+    <option>Umm Al-Qura University</option>
+    <option>King Saud University</option>
+    <option>Princess Nourah University</option>
+    <option>Imam Abdulrahman Bin Faisal University</option>
+    <option>Taibah University</option>
+    <option>Taif University</option>
+    <option value="Other">Other</option>
+  </select>
+</div>
+
+<div class="field" id="otherUniversityField" style="display:none;">
+  <label>Other University</label>
+  <input type="text" id="otherUniversity" name="otherUniversity" placeholder="Enter your university">
+</div>
+
+        <div class="field">
+          <label>Student Level<span class="required"></span></label>
+          <select id="studentLevel" name="studentLevel" required>
+            <option value="">Select your level</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+            <option>5th Year</option>
+            <option>Graduate</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Expected Graduation Year<span class="required"></span></label>
+          <div class="date-box">
+            <input type="date" id="gradYear" name="gradYear" required>
+            <i class="fa-regular fa-calendar-days calendar-icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Training Start Date<span class="required"></span></label>
+          <div class="date-box">
+            <input type="date" id="trainingStart" name="trainingStart" required>
+            <i class="fa-regular fa-calendar-days calendar-icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Training End Date<span class="required"></span></label>
+          <div class="date-box">
+            <input type="date" id="trainingEnd" name="trainingEnd" required>
+            <i class="fa-regular fa-calendar-days calendar-icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>GPA<span class="required"></span></label>
+<input
+  type="number"
+  id="gpa"
+  name="gpa"
+  placeholder="e.g. 4.50"
+  min="0"
+  step="0.01"
+  required
+>        </div>
+
+        <div class="field">
+          <label>GPA Score<span class="required"></span></label>
+          <select id="gpaScore" name="gpaScore" required>
+            <option value="">Select GPA scale</option>
+            <option>Out of 4</option>
+            <option>Out of 5</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="form-nav">
+        <button type="button" class="previous-btn" id="prevBtn">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+        </button>
+
+        <button type="button" class="next-btn" id="nextBtn">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </form>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/academic.js"></script>
+</body>
+</html>

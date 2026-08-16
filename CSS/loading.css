@@ -1,0 +1,309 @@
+/* =========================
+   Reset
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    background:#ffffff;
+}
+
+/* =========================
+   Main Screen
+   (was a fixed 1280x720 box — now fills the actual browser
+   window at any size, so nothing gets cropped or letterboxed)
+========================= */
+
+.loading-screen{
+
+    width:100vw;
+    height:100vh;
+
+    background:#ffffff;
+
+    position:relative;
+    overflow:hidden;
+
+}
+
+/* =========================
+   Center Content
+========================= */
+
+.center-content{
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+    z-index:100;
+
+}
+
+.main-logo{
+
+    width:clamp(110px, 14vw, 180px);
+
+    margin-bottom:25px;
+
+}
+
+/* =========================
+   Loader
+========================= */
+
+.loader{
+
+    width:42px;
+    height:42px;
+
+    margin:auto;
+
+    border:5px solid #d9d9d9;
+    border-top:5px solid #007A3D;
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* =========================
+   Background Images
+   (all sizes/positions converted from the original fixed px
+   values to vw/% equivalents, based on the original 1280x720 canvas,
+   so they keep the same proportions at any screen size)
+========================= */
+
+.academy-img{
+
+    position:absolute;
+
+    left:3.1%;
+    bottom:9.7%;
+
+    width:32.8vw;
+
+    opacity:.13;
+
+}
+
+.plane-img{
+
+    position:absolute;
+
+    right:-1.6%;
+    bottom:15.3%;
+
+    width:40.6vw;
+
+    opacity:.13;
+
+}
+
+.watermark-logo{
+
+    position:absolute;
+
+    left:-5.5%;
+    top:20.8%;
+
+    width:22.7vw;
+
+    opacity:.05;
+
+}
+
+/* =========================
+   Decorative Dots
+========================= */
+
+.dots{
+
+    position:absolute;
+
+    width:7vw;
+    height:7vw;
+
+    background-image:radial-gradient(#8EC5AE 2px,transparent 2px);
+
+    background-size:14px 14px;
+
+    opacity:.65;
+
+}
+
+.dots-left{
+
+    left:2.7%;
+    top:4.9%;
+
+}
+
+.dots-right{
+
+    right:2.7%;
+    top:44.4%;
+
+}
+
+/* =========================
+   Decorative Circles
+========================= */
+
+.circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(0,122,61,.10);
+
+}
+
+.circle-top{
+
+    width:26.6vw;
+    height:26.6vw;
+
+    top:-22.2%;
+    right:-9.4%;
+
+}
+
+.circle-bottom{
+
+    width:33.6vw;
+    height:33.6vw;
+
+    left:-13.3%;
+    bottom:-27.8%;
+
+}
+
+/* =========================
+   Top Curved Lines
+========================= */
+
+.line-pattern{
+
+    position:absolute;
+
+    right:11.7%;
+    top:-16.7%;
+
+    width:32.8vw;
+    height:19.5vw;
+
+    border-radius:50%;
+
+    border:1px solid rgba(0,122,61,.10);
+
+    box-shadow:
+
+    0 0 0 1.4vw rgba(0,122,61,.04),
+
+    0 0 0 2.8vw rgba(0,122,61,.035),
+
+    0 0 0 4.2vw rgba(0,122,61,.03),
+
+    0 0 0 5.6vw rgba(0,122,61,.025);
+
+}
+
+/* =========================
+   Bottom Waves
+========================= */
+
+.wave{
+
+    position:absolute;
+
+    width:100%;
+
+    left:0;
+    bottom:0;
+
+}
+
+.wave-one{
+
+    height:11.7vw;
+
+    background:rgba(0,122,61,.10);
+
+    clip-path:polygon(
+    0 60%,
+    20% 70%,
+    40% 45%,
+    60% 68%,
+    80% 45%,
+    100% 60%,
+    100% 100%,
+    0 100%
+    );
+
+}
+
+.wave-two{
+
+    height:7.8vw;
+
+    background:rgba(0,122,61,.17);
+
+    clip-path:polygon(
+    0 75%,
+    25% 58%,
+    45% 80%,
+    65% 55%,
+    85% 72%,
+    100% 60%,
+    100% 100%,
+    0 100%
+    );
+
+}
+
+/* =========================
+   Small phones — decorative background elements can get a
+   little too bold/crowded at very narrow widths, so tone them
+   down slightly instead of shrinking every single value further
+========================= */
+
+@media (max-width:480px){
+
+    .dots{
+        opacity:.4;
+    }
+
+    .watermark-logo{
+        opacity:.03;
+    }
+
+}

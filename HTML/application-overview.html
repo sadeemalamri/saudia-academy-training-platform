@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Application Overview</title>
+
+  <link rel="stylesheet" href="../CSS/application-overview.css">
+  <link rel="stylesheet" href="../CSS/reset.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
+</head>
+
+<body>
+
+<div class="admin-page" id="dashboard">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ================= Sidebar ================= -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="logo-box">
+      <img
+        src="../images/logo.png"
+        class="side-logo"
+        alt="Saudia Academy"
+      >
+
+      <button class="sidebar-close" id="sidebarClose" title="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <nav class="side-menu">
+
+      <a href="admin-dashboard.html" class="menu-link">
+        <i class="fa-solid fa-house"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="admin-applications.html" class="menu-link active">
+        <i class="fa-solid fa-users"></i>
+        <span>Applications</span>
+      </a>
+
+      <a href="assign-supervisor.html" class="menu-link">
+        <i class="fa-solid fa-user-tie"></i>
+        <span>Supervisors</span>
+      </a>
+
+      <a href="training-plans.html" class="menu-link">
+        <i class="fa-regular fa-calendar-check"></i>
+        <span>Training Plans</span>
+      </a>
+
+      <a href="admin-jobs.html" class="menu-link">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Jobs</span>
+      </a>
+
+      <a href="admin-settings.html" class="menu-link">
+        <i class="fa-solid fa-gear"></i>
+        <span>Settings</span>
+      </a>
+
+     <a href="loading.html" class="menu-link" id="logoutBtn" data-logout>
+  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  <span>Log Out</span>
+</a>
+
+    </nav>
+
+  </aside>
+
+  <!-- ================= Main ================= -->
+
+  <main class="main">
+
+    <!-- Topbar -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" title="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <img src="../images/logo.png" class="topbar-logo" alt="Saudia Academy">
+      </div>
+
+      <div class="top-actions">
+
+
+        <div class="admin-user">
+          <i class="fa-regular fa-circle-user"></i>
+          <span id="topbarAdminName">Admin</span>
+        </div>
+
+      </div>
+
+    </header>
+
+    <!-- Content -->
+
+    <section class="content">
+
+      <p class="breadcrumb">
+        <a href="admin-applications.html">Applications</a>
+        <span>&gt;</span>
+        <span id="breadcrumbName">Loading...</span>
+      </p>
+
+      <div class="layout">
+
+        <!-- ================= Left Content ================= -->
+
+        <div class="left-content">
+
+          <!-- Profile Card -->
+
+          <div class="profile-card">
+
+            <div class="profile-left">
+
+              <div class="avatar">
+                <i class="fa-solid fa-user"></i>
+              </div>
+
+              <div>
+
+                <h2 id="profileName">Loading...</h2>
+
+                <div class="profile-info">
+
+                  <span>
+                    <i class="fa-regular fa-envelope"></i>
+                    <span id="profileEmail"></span>
+                  </span>
+
+                  <span>
+                    <i class="fa-solid fa-phone"></i>
+                    <span id="profilePhone"></span>
+                  </span>
+
+                  <span>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="profileCity"></span>
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="profile-details">
+
+              <div>
+                <p>Applied On</p>
+                <h4 id="profileAppliedOn"></h4>
+              </div>
+
+              <div>
+                <p>Status</p>
+                <span class="status" id="profileStatus"></span>
+              </div>
+
+              <div>
+                <p>National ID</p>
+                <h4 id="profileNationalId"></h4>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Tabs -->
+
+          <div class="tabs">
+
+            <a
+              href="application-overview.html"
+              class="tab active"
+            >
+              <i class="fa-solid fa-users"></i>
+              Overview
+            </a>
+
+            <a
+              href="application-documents.html"
+              class="tab"
+            >
+              <i class="fa-regular fa-file-lines"></i>
+              Documents
+            </a>
+
+          </div>
+
+          <!-- Personal Information -->
+
+          <div class="info-card">
+
+            <h3>
+              <i class="fa-regular fa-user"></i>
+              Personal Information
+            </h3>
+
+            <div class="info-grid">
+
+              <div>
+                <p>Full Name</p>
+                <h4 id="infoFullName"></h4>
+              </div>
+
+              <div>
+                <p>Date of Birth</p>
+                <h4 id="infoDob"></h4>
+              </div>
+
+              <div>
+                <p>Gender</p>
+                <h4 id="infoGender"></h4>
+              </div>
+
+              <div>
+                <p>National ID</p>
+                <h4 id="infoNationalId"></h4>
+              </div>
+
+              <div>
+                <p>Phone Number</p>
+                <h4 id="infoPhone"></h4>
+              </div>
+
+              <div>
+                <p>Email</p>
+                <h4 id="infoEmail"></h4>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Education Information -->
+
+          <div class="info-card">
+
+            <h3>
+              <i class="fa-solid fa-graduation-cap"></i>
+              Education Information
+            </h3>
+
+            <div class="info-grid">
+
+              <div>
+                <p>University</p>
+                <h4 id="eduUniversity"></h4>
+              </div>
+
+              <div>
+                <p>Program</p>
+                <h4 id="eduMajor"></h4>
+              </div>
+
+              <div>
+                <p>Academic Level</p>
+                <h4 id="eduLevel"></h4>
+              </div>
+
+              <div>
+                <p>GPA</p>
+                <h4 id="eduGpa"></h4>
+              </div>
+
+              <div>
+                <p>Expected Graduation</p>
+                <h4 id="eduGraduation"></h4>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ================= Right Panel ================= -->
+
+        <aside class="right-panel">
+
+          <div class="analysis-card">
+
+            <h3>
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              AI Analysis Summary
+            </h3>
+
+            <div id="analysisContent">
+              <p style="color:#888;font-size:14px;">Loading analysis...</p>
+            </div>
+
+          </div>
+
+          <div class="actions-card">
+
+            <h3>Actions</h3>
+
+            <button
+              type="button"
+              class="accept-btn"
+              id="openAssignModal"
+            >
+              <i class="fa-regular fa-circle-check"></i>
+              Accept Application
+            </button>
+
+            <button
+              type="button"
+              class="reject-btn"
+              id="rejectBtn"
+            >
+              <i class="fa-regular fa-circle-xmark"></i>
+              Reject Application
+            </button>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<!-- ================= Assign Training Modal ================= -->
+
+<div class="assign-modal-overlay" id="assignModal">
+
+  <div class="assign-modal-box">
+
+    <div class="assign-modal-header">
+
+      <div>
+
+        <h2>Assign Training Details</h2>
+
+        <p>
+          Please assign a training supervisor for this accepted applicant.
+        </p>
+
+      </div>
+
+      <button
+        type="button"
+        class="assign-close-btn"
+        id="closeAssignModal"
+        aria-label="Close modal"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+    <form class="assign-form" id="assignForm">
+
+      <div class="assign-form-group">
+
+        <label for="trainingSupervisor">
+          Training Supervisor <span>*</span>
+        </label>
+
+        <select id="trainingSupervisor" required>
+
+          <option value="" selected disabled>
+            No supervisors available yet
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="assign-form-group">
+
+        <label for="studentMajor">
+          Student Program
+        </label>
+
+        <input
+          id="studentMajor"
+          type="text"
+          value="Software Engineering"
+          readonly
+        >
+
+      </div>
+
+      <div class="assign-form-group">
+
+        <label for="standardPlan">
+          Training Plan <span>*</span>
+        </label>
+
+        <select id="standardPlan" required>
+
+          <option value="" selected disabled>
+            Loading training plans...
+          </option>
+
+        </select>
+
+        <small class="field-hint">
+          The plan matching this student's program is pre-selected when found — you can pick a different one instead.
+        </small>
+
+      </div>
+
+      <div class="assign-form-group">
+
+        <label for="trainingTerm">
+          Training Term
+        </label>
+
+        <input
+          id="trainingTerm"
+          type="text"
+          value="Summer 2026"
+          readonly
+        >
+
+      </div>
+
+      <div class="assign-form-group">
+
+        <label>Training Plan PDF</label>
+
+        <div class="pdf-preview">
+
+          <i class="fa-regular fa-file-pdf"></i>
+
+          <span>
+            Will be loaded from Training Plans Management
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="assign-actions">
+
+        <button
+          type="button"
+          class="assign-cancel-btn"
+          id="cancelAssignModal"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="assign-save-btn"
+        >
+          <i class="fa-solid fa-check"></i>
+          Save Assignment
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- ================= Reject Confirmation Modal ================= -->
+
+<div class="reject-modal-overlay" id="rejectModal">
+
+  <div class="reject-modal-box">
+
+    <div class="reject-modal-icon">
+      <i class="fa-regular fa-circle-xmark"></i>
+    </div>
+
+    <h2>Reject Application?</h2>
+
+    <p>
+      Are you sure you want to reject this application?
+      This action cannot be undone.
+    </p>
+
+    <div class="reject-modal-actions">
+
+      <button
+        type="button"
+        class="reject-modal-cancel"
+        id="cancelRejectModal"
+      >
+        Cancel
+      </button>
+
+      <button
+        type="button"
+        class="reject-modal-confirm"
+        id="confirmRejectModal"
+      >
+        Yes, Reject
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/application-overview.js"></script>
+
+</body>
+</html>

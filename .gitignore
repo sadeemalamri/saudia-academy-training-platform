@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Local secrets / real Supabase keys — never commit this file
+JS/config.js
+
+# Python service secrets
+docs/ai-services/cv-analysis-api/.env
+docs/ai-services/cv-analysis-api/__pycache__/
+docs/ai-services/cv-analysis-api/venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log

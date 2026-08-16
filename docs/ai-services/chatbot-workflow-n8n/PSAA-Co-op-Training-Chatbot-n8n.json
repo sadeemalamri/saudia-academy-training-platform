@@ -1,0 +1,335 @@
+{
+  "name": "PSAA Co-op Training Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "mode": "webhook",
+        "options": {}
+      },
+      "id": "83448d2f-a2f8-4850-9a8e-c6f1be00c0af",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        208
+      ],
+      "webhookId": "b0d1af9f-cd4f-4c6e-9db0-a6c205c3d6e9"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are Saudia Academy Assistant the official website assistant.\n\nRULES:\n- Answer ONLY from the \"knowledge_base\" tool and these rules. For any factual question about the academy, programs, majors, application steps, accounts, or contact info, call \"knowledge_base\" first and answer from what it returns. Never use general knowledge, web search, or guesses.\n- If the answer is not in the knowledge base, reply: \"Sorry, I don't have confirmed information about that. Please contact Saudia Academy for further assistance.\"\n- If the question is unrelated to Saudia Academy, reply: \"Sorry, I can only help with questions related to Saudia Academy and its training programs\".\n\nSTYLE: Keep responses very brief and direct. Answer only the specific question, 1-2 sentences for simple questions. No extra details or lists unless asked. Reply in the user's language (Arabic for Arabic, English for English).\n\nDo not mix Arabic and English in the same response even in academy names .\n\nIf the user sends a greeting respond with a short friendly greeting and offer help with Saudia Academy.",
+          "enableStreaming": true
+        }
+      },
+      "id": "56584dac-a8b1-424c-8bbd-37c5088197c7",
+      "name": "PSAA Assistant",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        288,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini",
+          "cachedResultName": "gpt-4.1-mini",
+          "cachedResultUrl": ""
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "id": "827f6cb1-6998-48b1-aafe-60bd4d65d6d8",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        224
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "qziiy3tyO107zdJq",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 6
+      },
+      "id": "090ffc9e-d8c6-4737-9f88-10e1a0946ac4",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        352,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Search the Saudia Academy (PSAA) knowledge base for factual information about the academy, training programs, majors, application process, account help, and contact details. Use this whenever the user asks about the academy, programs, how to apply, or contact info.",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "psaa_knowledge_base",
+          "cachedResultName": "psaa_knowledge_base"
+        },
+        "topK": 3
+      },
+      "id": "5b33291c-0679-4e4c-bcc7-b52da8288b60",
+      "name": "knowledge_base",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        480,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "57a75548-24f1-4ac7-a677-3a3fbd991478",
+      "name": "Embeddings (Retrieve)",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        480,
+        432
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "qziiy3tyO107zdJq",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "0d452d86-f18d-4ce3-a34f-65564769cbc7",
+      "name": "Load Knowledge Base",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        752
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "text",
+              "value": "TECHNICAL SERVICES DEPARTMENT - TRAINING REPORT (Saudia Academy)\n\nABOUT SAUDIA ACADEMY\nSaudia Academy is a specialized aviation training institution committed to quality and training excellence. It aims to provide world-class training and play a leading role in the Middle East and North Africa region. The Academy continuously develops its training capabilities and provides clients with the knowledge and skills needed to achieve their professional goals, while supporting the future of training in line with Saudi Vision 2030.\nVision: To become a world-class aviation training institution and a leading training academy in the Middle East and North Africa region.\nMission: To provide high-quality training solutions that develop knowledge and skills, strengthen customer relationships, and contribute to the future of aviation training in line with Saudi Vision 2030.\n\nTECHNICAL SERVICES DEPARTMENT OVERVIEW\nThe Technical Services Department supports the readiness, reliability, and safety of training systems and equipment at Saudia Academy. The department provides technical support for flight simulators, training devices, facilities, hardware and software systems, and logistics activities.\n\nTECHNICAL SERVICES DEPARTMENT SECTIONS\nThe Technical Services Department consists of six main sections:\n1. Maintenance Training Devices Section: Responsible for maintaining the readiness and safety of training devices through preventive maintenance, inspections, troubleshooting, testing, and repairs.\n2. Training Support Section: Provides technical support during training sessions and ensures that training equipment and environments are ready for use. It also coordinates between maintenance teams, instructors, and training schedules.\n3. Facility Support Section: Maintains a safe and functional training environment by supporting facilities, electrical systems, lighting, air conditioning, emergency systems, and security and safety systems.\n4. Logistic Support Section: Manages inventory, spare parts, materials, and logistics required for the maintenance and operation of simulators and training devices, helping reduce equipment downtime.\n5. Hardware Engineering Section: Provides engineering support for simulator hardware, including technical testing, upgrades, preventive maintenance support, troubleshooting, and compliance with regulatory and manufacturer requirements.\n6. Software Engineering Section: Manages simulator operating systems, flight models, databases, visual software, and software updates. The section also provides classroom and on-the-job technical training for simulator technicians and supports training plans, tests, records, and materials.\n\nTRAINING PROGRAM OVERVIEW\nTraining in the Technical Services Department focuses on developing the technical knowledge and practical skills required to support and maintain aviation training systems and flight simulators. Training is conducted in person and combines classroom instruction with practical on-the-job training. The training content varies depending on the program and technical specialization.\n\nTRAINING OBJECTIVES\nThe training aims to: develop technical and practical skills; improve maintenance and troubleshooting abilities; develop knowledge of simulator hardware and software; improve inspection and maintenance skills; promote safety, quality, and technical standards; develop problem-solving and fault diagnosis skills; provide practical workplace experience; prepare trainees for technical aviation environments; support professional and technical development.\n\nTRAINING METHOD AND DURATION\nTraining Method: Training in the Technical Services Department is in person only and may include both classroom instruction and practical on-the-job training.\nTraining Duration: The training duration varies depending on the program, technical specialization, content, and training requirements.\n\nADMISSION REQUIREMENTS\nAdmission requirements may vary depending on the program. General requirements include: an appropriate academic level; a good level of English; a specialization related to the technical fields available in the department; successful completion of a personal interview; readiness to participate in technical and practical training.\n\nFREQUENTLY ASKED QUESTIONS (Technical Services Department)\nIs the training conducted in person? Yes, the training is in person only.\nIs remote training available? No.\nHow long is the training? The duration varies depending on the program.\nIs the training paid? No.\nIs there a financial allowance? No.\nDoes the trainee receive a certificate? Yes, after completing the training.\nIs there an interview? Yes.\nIs English required? Yes, a good level of English is required.\nIs a specific academic specialization required? Yes, the specialization should be related to the technical fields available in the department.\n\nCONCLUSION\nThe Technical Services Department plays an important role in supporting the readiness, reliability, and safety of aviation training systems at Saudia Academy. Through its six specialized sections, the department provides technical, engineering, operational, and logistical support. Its training combines theoretical knowledge with practical experience, helping trainees develop the technical and professional skills required in aviation technical environments.\n\n\n\n\n\n\n\nCOOP TRAINING PROGRAM\nIt is a practical training program designed for university students to gain hands-on experience, develop professional skills, and work with aviation industry professionals. The training is on-site at Saudia Academy in Jeddah. Training duration:depend on the program. Training type: On-site. Training location: Saudia Academy, Jeddah, Saudi Arabia. Upon successful completion of the program, trainees receive a certificate of completion. The program aims to: provide practical hands-on experience; develop professional skills; give students experience in a real work environment; allow trainees to work alongside experts and industry professionals; support career development in aviation.\n\nWHO CAN APPLY\nUniversity students interested in gaining practical experience through the academy’s training programs can apply, subject to the requirements of each opportunity. The application may require academic information such as: University, Major, Student Level, Expected Graduation Year, GPA, GPA Scale. Do not invent additional eligibility requirements.\n\nAVAILABLE MAJORS AND PROGRAMS\nAvailable majors depend on the training opportunities offered at the time of application. Examples include: IT, Software Engineering, Data Analysis, Cybersecurity, Cloud Engineering. \n\nAPPLICATION OPENING\nThe application opening date depends on the specific program. If the user asks when the application opens, tell them to check the \"Apply Now\" section on the website for current application availability. Do not invent or assume an application date.\n\nAPPLICATION PROCESS\nUsers can apply through the \"Apply Now\" section on the website. \nThe application form contains four steps. Step 1: Personal Information (First Name, Last Name, National ID, Email, Date of Birth, Gender, Mobile Number, City). Step 2: Academic Information (University, Major, Student Level, Expected Graduation Year, Training Start Date, Training End Date, GPA, GPA Scale). Step 3: Documents (may require CV / Resume, Academic Letter, Certificates, Recommendation Letter (Optional)). uments before submitting the application).\n\nUSER ACCOUNT\nUsers can log in using their email address and password. Users can access their profile after logging in.\n\nWEBSITE SUPPORT\nHelp users with: applying for training programs; finding available programs; uploading documents; understanding application fields; editing their profile; logging in; resetting their password; understanding application steps.\n\nCONTACT INFORMATION\nEmail: PSAA.SBU@saudia.com. Phone: +966 12 686 2474. Website: https://psaa.com.sa. Location: Al-Khalidiyah District, Jeddah, Saudi Arabia.",
+              "type": "string"
+            },
+            {
+              "id": "a2",
+              "name": "source",
+              "value": "PSAA Website Knowledge",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "859b70df-7a24-4fa6-94a8-6db70a1e4f14",
+      "name": "Academy Info",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        752
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "psaa_knowledge_base",
+          "cachedResultName": "psaa_knowledge_base"
+        },
+        "clearStore": true
+      },
+      "id": "5b7ffcd9-fa39-4b5b-b714-31aa7c27ad56",
+      "name": "Insert to Knowledge Base",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        448,
+        752
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "0b33c0e9-a8cd-4843-9daf-a0b53683f4b5",
+      "name": "Embeddings (Insert)",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        464,
+        976
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "qziiy3tyO107zdJq",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={{ $json.text }}",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "source",
+                "value": "={{ $json.source }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "c5c9fac3-cf77-4825-8ec9-d63ed0fc133a",
+      "name": "Academy Document Loader",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        656,
+        976
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "PSAA Assistant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "PSAA Assistant",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "PSAA Assistant",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "knowledge_base": {
+      "ai_tool": [
+        [
+          {
+            "node": "PSAA Assistant",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings (Retrieve)": {
+      "ai_embedding": [
+        [
+          {
+            "node": "knowledge_base",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Knowledge Base": {
+      "main": [
+        [
+          {
+            "node": "Academy Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Academy Info": {
+      "main": [
+        [
+          {
+            "node": "Insert to Knowledge Base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings (Insert)": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Insert to Knowledge Base",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Academy Document Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Insert to Knowledge Base",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "01484970-f6b7-41b6-8351-0e29485be0d7",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2257eda721a837525c59c15530f0e2fe4ff47f52bdb7d1ca02a36216216ebb66"
+  },
+  "nodeGroups": [],
+  "id": "Fp8gYu2huW6LOVEp",
+  "tags": []
+}

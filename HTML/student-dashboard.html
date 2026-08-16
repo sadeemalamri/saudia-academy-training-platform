@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="../CSS/reset.css">
+
+  <link rel="stylesheet" href="../CSS/student-dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <div class="dashboard" id="dashboard">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="logo-box">
+        <img src="../images/logo.png" class="side-logo" alt="Saudia Academy">
+        <button class="sidebar-close" id="sidebarClose" title="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <nav class="side-menu">
+        <a class="active" href="#">
+          <i class="fa-solid fa-house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="your-plan.html">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <span>Your Plan</span>
+        </a>
+
+        <a href="Settings.html">
+          <i class="fa-solid fa-gear"></i>
+          <span>Setting</span>
+        </a>
+
+       <a
+  href="loading.html"
+  class="menu-link"
+  id="logoutBtn"
+  data-logout
+>
+  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  <span>Log Out</span>
+</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle" title="Open menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <img src="../images/logo.png" class="topbar-logo" alt="Saudia Academy">
+        </div>
+        <div class="user">
+
+          <div class="notification-wrapper">
+            <button class="notification-btn" id="notificationBtn" type="button">
+              <i class="fa-regular fa-bell"></i>
+
+              <span class="notification-badge hidden" id="notificationBadge">0</span>
+            </button>
+
+            <div class="notification-dropdown" id="notificationDropdown">
+
+              <div class="notification-header">
+                <div>
+                  <h3>Notifications</h3>
+                  <p id="unreadText">No unread notifications</p>
+                </div>
+              </div>
+              <div class="notification-list" id="notificationList">
+                <p class="notification-empty">
+                  Loading notifications...
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="user-circle">
+            <i class="fa-regular fa-user"></i>
+          </div>
+
+          <strong id="headerUserName">Loading...</strong>
+        </div>
+      </header>
+
+      <section class="content">
+
+        <h1>
+          Welcome Back, <span id="welcomeUserName">Loading...</span> 👋
+        </h1>
+        <p class="subtitle">Here’s an overview of your application.</p>
+
+        <div class="details-card">
+
+          <h2>Application Details</h2>
+          <div class="line"></div>
+
+          <div class="detail-row">
+            <div class="label">
+              <span><i class="fa-regular fa-id-card"></i></span>
+              Application ID
+            </div>
+            <div class="value" id="applicationId">—</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="label">
+              <span><i class="fa-solid fa-building-columns"></i></span>
+              University
+            </div>
+            <div class="value" id="university">—</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="label">
+              <span><i class="fa-solid fa-cube"></i></span>
+              Program
+            </div>
+            <div class="value" id="major">—</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="label">
+              <span><i class="fa-regular fa-circle-check"></i></span>
+              Status
+            </div>
+            <div class="value" id="applicationStatus">—</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="label">
+              <span><i class="fa-regular fa-calendar-check"></i></span>
+              Training Term
+            </div>
+            <div class="value" id="trainingTerm">—</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="label">
+              <span><i class="fa-regular fa-calendar-days"></i></span>
+              Submission Date
+            </div>
+            <div class="value" id="submissionDate">—</div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+  <script src="../JS/student-dashboard.js"></script>
+
+</body>
+
+</html>

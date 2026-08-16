@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Admin Applications</title>
+
+  <link rel="stylesheet" href="../CSS/reset.css" />
+
+  <link rel="stylesheet" href="../CSS/admin-applications.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+
+<body>
+
+  <div class="dashboard" id="dashboard">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ================= Sidebar ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+      <div class="logo-box">
+
+        <img src="../images/logo.png" class="side-logo" alt="Saudia Academy Logo" />
+
+        <button class="sidebar-close" id="sidebarClose" type="button" title="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+      </div>
+
+      <nav class="side-menu">
+
+        <a href="admin-dashboard.html" class="menu-link">
+          <i class="fa-solid fa-house"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="admin-applications.html" class="menu-link active">
+          <i class="fa-solid fa-users"></i>
+          <span>Applications</span>
+        </a>
+
+        <a href="assign-supervisor.html" class="menu-link">
+          <i class="fa-solid fa-user-tie"></i>
+          <span>Supervisors</span>
+        </a>
+
+        <a href="training-plans.html" class="menu-link">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span>Training Plans</span>
+        </a>
+
+        <a href="admin-jobs.html" class="menu-link">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Jobs</span>
+        </a>
+
+        <a href="admin-settings.html" class="menu-link">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </a>
+
+        <a href="loading.html" class="menu-link" id="logoutBtn" data-logout>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Log Out</span>
+        </a>
+
+      </nav>
+
+    </aside>
+
+    <!-- ================= Main ================= -->
+
+    <main class="main">
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button class="menu-toggle" id="menuToggle" type="button" title="Open menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <img src="../images/logo.png" class="topbar-logo" alt="Saudia Academy" />
+
+        </div>
+
+        <div class="top-actions">
+
+          <div class="admin-user">
+            <i class="fa-regular fa-circle-user"></i>
+            <span id="topbarAdminName">Admin</span>
+          </div>
+
+        </div>
+
+      </header>
+
+      <section class="content">
+
+        <div class="page-title">
+          <h1>All Applications</h1>
+        </div>
+        <div class="applications-filters">
+
+          <div class="filter-group">
+            <label for="programFilter">Program</label>
+
+            <select id="programFilter">
+              <option value="all">All Programs</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="statusFilter">Status</label>
+
+            <select id="statusFilter">
+              <option value="all">All Statuses</option>
+              <option value="pending">Pending</option>
+              <option value="accepted">Accepted</option>
+              <option value="rejected">Rejected</option>
+              <option value="under_review">Under Review</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sortFilter">Sort By</label>
+
+            <select id="sortFilter">
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="applications-card">
+
+          <table class="applications-table">
+
+            <thead>
+              <tr>
+                <th>Applicant</th>
+                <th>Program</th>
+                <th>Applied On</th>
+                <th>Status</th>
+                <th class="match-column">Match %</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td colspan="6" class="empty-state">
+                  <i class="fa-regular fa-folder-open"></i>
+
+                  <h3>No Applications Yet</h3>
+
+                  <p>
+                    Submitted applications will appear here once students apply.
+                  </p>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+          <div class="pagination" id="pagination" style="display: none;"></div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+  <script src="../JS/admin-applications.js"></script>
+
+</body>
+
+</html>

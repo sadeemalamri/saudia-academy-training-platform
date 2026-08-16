@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Admin Dashboard</title>
+
+  <link
+    rel="stylesheet"
+    href="../CSS/reset.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="../CSS/admin-dashboard.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  />
+</head>
+
+<body>
+
+  <div class="dashboard" id="dashboard">
+
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+    ></div>
+
+    <aside class="sidebar" id="sidebar">
+
+      <div class="logo-box">
+
+        <img
+          src="../images/logo.png"
+          class="side-logo"
+          alt="Saudia Academy Logo"
+        />
+
+        <button
+          class="sidebar-close"
+          id="sidebarClose"
+          type="button"
+          title="Close menu"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+      </div>
+
+      <nav class="side-menu">
+
+        <a
+          href="admin-dashboard.html"
+          class="menu-link active"
+        >
+          <i class="fa-solid fa-house"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a
+          href="admin-applications.html"
+          class="menu-link"
+        >
+          <i class="fa-solid fa-users"></i>
+          <span>Applications</span>
+        </a>
+
+        <a
+          href="assign-supervisor.html"
+          class="menu-link"
+        >
+          <i class="fa-solid fa-user-tie"></i>
+          <span>Supervisors</span>
+        </a>
+
+        <a
+          href="training-plans.html"
+          class="menu-link"
+        >
+          <i class="fa-regular fa-calendar-check"></i>
+          <span>Training Plans</span>
+        </a>
+
+        <a
+          href="admin-jobs.html"
+          class="menu-link"
+        >
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Jobs</span>
+        </a>
+
+        <a
+          href="admin-settings.html"
+          class="menu-link"
+        >
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </a>
+
+        <a
+          href="loading.html"
+          class="menu-link"
+          id="logoutBtn"
+          data-logout
+        >
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Log Out</span>
+        </a>
+
+      </nav>
+
+    </aside>
+
+    <main class="main">
+
+      <header class="topbar">
+
+        <div class="topbar-left">
+
+          <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            title="Open menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <img
+            src="../images/logo.png"
+            class="topbar-logo"
+            alt="Saudia Academy"
+          />
+
+        </div>
+
+        <div class="top-actions">
+
+          <div class="admin-user">
+            <i class="fa-regular fa-circle-user"></i>
+            <span id="topbarAdminName">Admin</span>
+          </div>
+
+        </div>
+
+      </header>
+
+      <section class="content">
+
+        <div class="welcome-row">
+
+          <div>
+            <h1 id="welcomeHeading">
+              Welcome Back, Admin 👋
+            </h1>
+          </div>
+
+          <div class="date-box">
+            <i class="fa-regular fa-calendar"></i>
+            <span>15 July, 2026</span>
+          </div>
+
+        </div>
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              <i class="fa-solid fa-user-group"></i>
+            </div>
+
+            <div>
+              <h2>0</h2>
+              <p>Total Applicants</p>
+            </div>
+
+          </div>
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              <i class="fa-regular fa-clock"></i>
+            </div>
+
+            <div>
+              <h2>0</h2>
+              <p>Pending Review</p>
+            </div>
+
+          </div>
+
+          <div class="stat-card">
+
+            <div class="stat-icon">
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+
+            <div>
+              <h2>0</h2>
+              <p>Accepted</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="applications-card">
+
+          <div class="card-header">
+            <h2>Recent Applications</h2>
+            <a href="admin-applications.html">View all</a>
+          </div>
+
+          <div class="table-scroll">
+
+            <table class="applications-table">
+
+              <thead>
+                <tr>
+                  <th>Applicant</th>
+                  <th>Program</th>
+                  <th>Applied On</th>
+                  <th>Status</th>
+                  <th class="match-column">Match %</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td
+                    colspan="6"
+                    class="empty-message"
+                  >
+                    <i class="fa-regular fa-folder-open"></i>
+                    <span>No applications yet</span>
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+  <script src="../JS/admin-dashboard.js"></script>
+
+</body>
+
+</html>

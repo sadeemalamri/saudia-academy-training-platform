@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Plan</title>
+  <link rel="stylesheet" href="../CSS/reset.css">
+
+  <link rel="stylesheet" href="../CSS/your-plan.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+
+<body>
+
+<div class="dashboard" id="dashboard">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="logo-box">
+      <img src="../images/logo.png" class="side-logo" alt="Saudia Academy">
+
+      <button class="sidebar-close" id="sidebarClose" title="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <nav class="side-menu">
+      <a href="student-dashboard.html">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+
+      <a class="active" href="#">
+        <i class="fa-solid fa-clipboard-list"></i>
+        <span>Your Plan</span>
+      </a>
+
+      <a href="Settings.html">
+        <i class="fa-solid fa-gear"></i>
+        <span>Setting</span>
+      </a>
+
+      <a
+  href="loading.html"
+  class="menu-link"
+  id="logoutBtn"
+  data-logout
+>
+  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  <span>Log Out</span>
+</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" title="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <img src="../images/logo.png" class="topbar-logo" alt="Saudia Academy">
+      </div>
+
+      <div class="user">
+
+        <div class="notification-wrapper">
+          <button class="notification-btn" id="notificationBtn" type="button">
+            <i class="fa-regular fa-bell"></i>
+
+            <span class="notification-badge hidden" id="notificationBadge">0</span>
+          </button>
+
+          <div class="notification-dropdown" id="notificationDropdown">
+
+            <div class="notification-header">
+              <div>
+                <h3>Notifications</h3>
+                <p id="unreadText">No unread notifications</p>
+              </div>
+            </div>
+
+            <div class="notification-list" id="notificationList">
+              <p class="notification-empty">
+                Loading notifications...
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="user-circle">
+          <i class="fa-regular fa-user"></i>
+        </div>
+
+        <span id="topbarUserName">Loading...</span>
+      </div>
+    </header>
+
+    <section class="content">
+
+      <h1>Your Training Plan</h1>
+
+      <div id="notAssignedState" style="display:none;text-align:center;padding:60px 20px;color:#888;">
+        <i class="fa-regular fa-folder-open" style="font-size:40px;display:block;margin-bottom:12px;"></i>
+        <h3 style="margin:0 0 8px;">No Training Plan Yet</h3>
+        <p style="margin:0;">Your supervisor and training plan will appear here once your application is accepted and assigned.</p>
+      </div>
+
+      <div id="planContent">
+
+      <!-- Supervisor Card -->
+      <section class="supervisor-card">
+
+        <div class="card-title">
+          <h2>Supervisor Information</h2>
+        </div>
+
+        <div class="supervisor-content">
+
+          <div class="supervisor-profile">
+            <div class="avatar">
+              <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div>
+              <h3 id="supervisorName">—</h3>
+              <span class="role-badge">Training Supervisor</span>
+            </div>
+          </div>
+
+          <div class="supervisor-info">
+
+            <div class="info-block">
+              <p>Department</p>
+              <strong id="supervisorDepartment">—</strong>
+            </div>
+
+            <div class="info-block">
+              <p>Email</p>
+              <strong id="supervisorEmail">—</strong>
+            </div>
+
+            <div class="info-block">
+              <p>Phone Number</p>
+              <strong id="supervisorPhone">—</strong>
+            </div>
+
+            <div class="info-block">
+              <p>Availability</p>
+              <strong id="supervisorAvailability">—</strong>
+            </div>
+
+          </div>
+
+          <div class="supervisor-actions">
+            <a href="#" id="supervisorEmailBtn" class="email-btn">
+              <i class="fa-regular fa-envelope"></i>
+              Email
+            </a>
+
+            <a href="#" id="supervisorCallBtn" class="call-btn">
+              <i class="fa-solid fa-phone"></i>
+              Call
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Plan Card -->
+      <section class="plan-card">
+
+        <div class="card-title plan-title-row">
+          <div class="title-left">
+            <span class="title-icon">
+              <i class="fa-regular fa-calendar-days"></i>
+            </span>
+            <h2> Training Plan</h2>
+          </div>
+        </div>
+
+        <div class="plan-details">
+
+          <div class="detail-row">
+            <div class="label">
+              <span><i class="fa-regular fa-file-lines"></i></span>
+              Plan Title
+            </div>
+            <div class="value" id="planTitleValue">—</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="label">
+              <span><i class="fa-regular fa-calendar-check"></i></span>
+              Training Term
+            </div>
+            <div class="value" id="planTermValue">—</div>
+          </div>
+
+          <div class="detail-row">
+            <div class="label">
+              <span><i class="fa-regular fa-clock"></i></span>
+              Total Hours
+            </div>
+            <div class="value" id="planHoursValue">—</div>
+          </div>
+
+        </div>
+
+        <div class="button-row">
+          <button class="download-btn" id="downloadPlanBtn">
+            <i class="fa-solid fa-download"></i>
+            Download Training Plan PDF
+          </button>
+        </div>
+
+      </section>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/your-plan.js"></script>
+
+</body>
+</html>

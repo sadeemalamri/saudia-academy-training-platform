@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Add Program Requirement</title>
+
+  <link rel="stylesheet" href="../CSS/admin-jobs.css">
+  <link rel="stylesheet" href="../CSS/reset.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
+</head>
+
+<body>
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <div class="logo-box">
+      <img
+        src="../images/logo.png"
+        class="side-logo"
+        alt="Saudia Academy Logo"
+      >
+    </div>
+      <nav class="side-menu">
+
+  <a href="admin-dashboard.html" class="menu-link ">
+    <i class="fa-solid fa-house"></i>
+    <span>Dashboard</span>
+  </a>
+
+  <a href="admin-applications.html" class="menu-link">
+    <i class="fa-solid fa-users"></i>
+    <span>Applications</span>
+  </a>
+
+  <a href="assign-supervisor.html" class="menu-link">
+    <i class="fa-solid fa-user-tie"></i>
+    <span>Supervisors</span>
+  </a>
+
+  <a href="training-plans.html" class="menu-link">
+  <i class="fa-regular fa-calendar-check"></i>
+  <span>Training Plans</span>
+</a>
+
+  <a href="admin-jobs.html" class="menu-link active">
+    <i class="fa-solid fa-briefcase"></i>
+    <span>Jobs</span>
+  </a>
+
+  <a href="admin-settings.html" class="menu-link">
+    <i class="fa-solid fa-gear"></i>
+    <span>Settings</span>
+  </a>
+
+<a
+  href="loading.html"
+  class="menu-link"
+  id="logoutBtn"
+  data-logout
+>
+  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  <span>Log Out</span>
+</a>
+</nav>
+
+  </aside>
+
+  <main class="main">
+
+  <header class="topbar">
+
+  <div class="topbar-left"></div>
+
+  <div class="top-actions">
+    <div class="admin-user">
+      <i class="fa-regular fa-circle-user"></i>
+      <span id="topbarAdminName">Admin</span>
+    </div>
+  </div>
+
+</header>
+
+    <section class="content">
+
+      <form id="programForm">
+
+        <div class="page-header add-page-header">
+
+          <div>
+
+            <h1 id="pageHeading">Add Program Requirement</h1>
+
+            <a
+              href="admin-jobs.html"
+              class="back-link"
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+              Back to Program Requirements
+            </a>
+
+          </div>
+
+          <button
+            type="submit"
+            class="primary-btn"
+            id="saveRequirementBtn"
+          >
+            <i class="fa-regular fa-floppy-disk"></i>
+            Save Requirement
+          </button>
+
+        </div>
+
+        <p id="programFormError" style="display:none;color:#c0392b;margin:8px 0;font-size:14px;"></p>
+
+        <div class="requirement-layout">
+
+          <div class="form-card">
+
+            <h2>Program Information</h2>
+
+            <div class="form-row">
+
+              <div class="form-group">
+
+                <label for="programTitle">
+                  Program Title
+                </label>
+
+                <select
+                  id="programTitle"
+                  name="programTitle"
+                  required
+                >
+                  <option value="" selected disabled>
+                    Select a program
+                  </option>
+
+                  <option>Software Engineering</option>
+                  <option>Computer Science</option>
+                  <option>Information Technology</option>
+                  <option>Information Systems</option>
+                  <option>Cybersecurity</option>
+                  <option>Data Science</option>
+                  <option>Business Administration</option>
+                  <option>Marketing</option>
+                  <option>Accounting</option>
+                  <option>Finance</option>
+                  <option>Human Resources</option>
+                  <option>Mechanical Engineering</option>
+                  <option>Electrical Engineering</option>
+                  <option>Civil Engineering</option>
+                  <option>Industrial Engineering</option>
+                  <option>Graphic Design</option>
+                  <option>Nursing</option>
+                  <option value="Other">Other</option>
+                </select>
+
+              </div>
+
+              <div
+                class="form-group"
+                id="otherProgramTitleField"
+                style="display:none;"
+              >
+
+                <label for="otherProgramTitle">
+                  Other Program Title
+                </label>
+
+                <input
+                  type="text"
+                  id="otherProgramTitle"
+                  name="otherProgramTitle"
+                  placeholder="Enter the program title"
+                  autocomplete="off"
+                  maxlength="80"
+                >
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="numberOfOpenings">
+                  Number of Openings
+                </label>
+
+                <input
+                  type="number"
+                  id="numberOfOpenings"
+                  name="numberOfOpenings"
+                  min="1"
+                  max="999"
+                  step="1"
+                  placeholder="e.g. 25"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+            <div class="form-row">
+
+              <div class="form-group">
+
+                <label for="trainingSeason">
+                  Training Term
+                </label>
+
+                <select
+                  id="trainingSeason"
+                  name="trainingSeason"
+                  required
+                >
+                  <option value="" selected disabled>
+                    Select training term
+                  </option>
+
+                  <option value="Summer">
+                    Summer
+                  </option>
+
+                  <option value="Fall">
+                    Fall
+                  </option>
+
+                  <option value="Spring">
+                    Spring
+                  </option>
+                </select>
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="trainingYear">
+                  Year
+                </label>
+
+                <input
+                  type="number"
+                  id="trainingYear"
+                  name="trainingYear"
+                  min="2026"
+                  max="2100"
+                  step="1"
+                  placeholder="e.g. 2027"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="form-card skills-card">
+
+            <div class="skills-card-header">
+
+              <div>
+
+                <h2>Required Skills</h2>
+
+                <p>
+                  Add the skills that the AI will use to evaluate applicants.
+                </p>
+
+              </div>
+
+              <span
+                class="skills-count"
+                id="skillsCount"
+              >
+                0 Skills
+              </span>
+
+            </div>
+
+            <div
+              id="skillsContainer"
+              class="skills-container"
+            ></div>
+
+            <button
+              type="button"
+              class="outline-btn"
+              id="addSkillBtn"
+            >
+              <i class="fa-solid fa-plus"></i>
+              Add Skill
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/add-program-requirement.js"></script>
+
+</body>
+</html>

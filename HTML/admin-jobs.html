@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Program Requirements</title>
+  <link rel="stylesheet" href="../CSS/reset.css">
+
+  <link rel="stylesheet" href="../CSS/admin-jobs.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
+</head>
+
+<body>
+
+<div class="dashboard" id="dashboard">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="logo-box">
+      <img
+        src="../images/logo.png"
+        class="side-logo"
+        alt="Saudia Academy Logo"
+      >
+
+      <button class="sidebar-close" id="sidebarClose" title="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+      <nav class="side-menu">
+
+  <a href="admin-dashboard.html" class="menu-link ">
+    <i class="fa-solid fa-house"></i>
+    <span>Dashboard</span>
+  </a>
+
+  <a href="admin-applications.html" class="menu-link">
+    <i class="fa-solid fa-users"></i>
+    <span>Applications</span>
+  </a>
+
+  <a href="assign-supervisor.html" class="menu-link">
+    <i class="fa-solid fa-user-tie"></i>
+    <span>Supervisors</span>
+  </a>
+
+  <a href="training-plans.html" class="menu-link">
+  <i class="fa-regular fa-calendar-check"></i>
+  <span>Training Plans</span>
+</a>
+
+  <a href="admin-jobs.html" class="menu-link active">
+    <i class="fa-solid fa-briefcase"></i>
+    <span>Jobs</span>
+  </a>
+
+  <a href="admin-settings.html" class="menu-link">
+    <i class="fa-solid fa-gear"></i>
+    <span>Settings</span>
+  </a>
+
+ <a href="loading.html" class="menu-link" id="logoutBtn" data-logout>
+  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  <span>Log Out</span>
+</a>
+
+</nav>
+
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" title="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <img src="../images/logo.png" class="topbar-logo" alt="Saudia Academy">
+      </div>
+
+      <div class="top-actions">
+
+
+        <div class="admin-user">
+          <i class="fa-regular fa-circle-user"></i>
+          <span id="topbarAdminName">Admin</span>
+        </div>
+
+      </div>
+
+    </header>
+
+    <section class="content">
+
+      <div class="page-header">
+
+        <h1>Program Requirements</h1>
+
+        <a
+          href="add-program-requirement.html"
+          class="primary-btn"
+        >
+          <i class="fa-solid fa-plus"></i>
+          Add New Requirement
+        </a>
+
+      </div>
+
+      <div class="program-card">
+
+        <div class="table-wrapper">
+
+          <table class="program-table">
+
+            <thead>
+              <tr>
+                <th>Program Title</th>
+                <th>Training Term</th>
+                <th>Total Openings</th>
+                <th>Required Skills</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody id="programTableBody"></tbody>
+
+          </table>
+
+        </div>
+
+        <div
+          class="table-footer"
+          id="tableFooter"
+        >
+          <div
+            class="pagination"
+            id="pagination"
+          ></div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<div
+  class="modal-overlay"
+  id="programModal"
+>
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>Program Details</h2>
+
+      <button
+        type="button"
+        class="modal-close-btn"
+        id="closeProgramModal"
+        aria-label="Close modal"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+    <div class="program-details-grid">
+
+      <div class="detail-item full-detail">
+        <span>Program Title</span>
+        <strong id="modalProgramTitle">—</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Training Term</span>
+        <strong id="modalTrainingTerm">—</strong>
+      </div>
+
+      <div class="detail-item">
+        <span>Number of Openings</span>
+        <strong id="modalOpenings">—</strong>
+      </div>
+
+      <div class="detail-item full-detail">
+
+        <span>Required Skills</span>
+
+        <div
+          class="modal-skills"
+          id="modalSkills"
+        ></div>
+
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button
+        type="button"
+        class="secondary-btn"
+        id="closeModalButton"
+      >
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/admin-jobs.js"></script>
+
+</body>
+</html>

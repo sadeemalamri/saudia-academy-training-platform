@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documents Page</title>
+    <link rel="stylesheet" href="../CSS/reset.css">
+
+  <link rel="stylesheet" href="../CSS/documents.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+
+<header class="app-header">
+  <img src="../images/logo.png" alt="Saudia Academy" class="logo">
+</header>
+
+<main class="page">
+
+  <section class="title-section">
+    <h1>Application Form</h1>
+    <p>Step 3 of 4</p>
+  </section>
+
+  <section class="steps-card">
+    <div class="step active">
+      <div class="circle">1</div>
+      <span>Personal Info</span>
+    </div>
+
+    <div class="line active-line"></div>
+
+    <div class="step active">
+      <div class="circle">2</div>
+      <span>Academic Info</span>
+    </div>
+
+    <div class="line active-line"></div>
+
+    <div class="step active">
+      <div class="circle">3</div>
+      <span>Documents</span>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="step">
+      <div class="circle">4</div>
+      <span>Review</span>
+    </div>
+  </section>
+
+  <section class="form-card">
+    <h2>Upload Documents</h2>
+    <p class="subtitle">Please upload the required documents</p>
+
+    <div class="upload-list">
+
+      <div class="upload-row" data-doc="cv">
+        <div class="doc-left">
+          <div class="doc-icon">
+            <i class="fa-regular fa-file-lines"></i>
+          </div>
+          <div>
+            <h3>CV/Resume</h3>
+            <p>PDF, DOC, DOCX (Max 5MB)</p>
+            <div class="file-name-row">
+              <p class="file-name" id="cvFileName"></p>
+              <i class="fa-solid fa-xmark remove-file" data-target="cvFile" title="Remove file"></i>
+            </div>
+          </div>
+        </div>
+
+        <label class="upload-btn" id="cvLabel">
+          <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+          <span class="upload-label-text">Upload</span>
+          <input type="file" id="cvFile" accept=".pdf,.doc,.docx" class="file-input-hidden" required>
+        </label>
+      </div>
+
+      <div class="upload-row" data-doc="academic">
+        <div class="doc-left">
+          <div class="doc-icon">
+            <i class="fa-regular fa-file-lines"></i>
+          </div>
+          <div>
+            <h3>Academic Letter</h3>
+            <p>PDF, DOC, DOCX (Max 5MB)</p>
+            <div class="file-name-row">
+              <p class="file-name" id="academicFileName"></p>
+              <i class="fa-solid fa-xmark remove-file" data-target="academicFile" title="Remove file"></i>
+            </div>
+          </div>
+        </div>
+
+        <label class="upload-btn" id="academicLabel">
+          <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+          <span class="upload-label-text">Upload</span>
+          <input type="file" id="academicFile" accept=".pdf,.doc,.docx" class="file-input-hidden" required>
+        </label>
+      </div>
+
+      <div class="upload-row" data-doc="certificates">
+        <div class="doc-left">
+          <div class="doc-icon">
+            <i class="fa-regular fa-file-lines"></i>
+          </div>
+          <div>
+            <h3>Certificates</h3>
+            <p>PDF, DOC, DOCX (Max 5MB)</p>
+            <div class="file-name-row">
+              <p class="file-name" id="certificatesFileName"></p>
+              <i class="fa-solid fa-xmark remove-file" data-target="certificatesFile" title="Remove file"></i>
+            </div>
+          </div>
+        </div>
+
+        <label class="upload-btn" id="certificatesLabel">
+          <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+          <span class="upload-label-text">Upload</span>
+          <input type="file" id="certificatesFile" accept=".pdf,.doc,.docx" class="file-input-hidden" required>
+        </label>
+      </div>
+
+      <div class="upload-row" data-doc="recommendation">
+        <div class="doc-left">
+          <div class="doc-icon">
+            <i class="fa-regular fa-file-lines"></i>
+          </div>
+          <div>
+            <h3>Recommendation Letter (Optional)</h3>
+            <p>PDF, DOC, DOCX (Max 5MB)</p>
+            <div class="file-name-row">
+              <p class="file-name" id="recommendationFileName"></p>
+              <i class="fa-solid fa-xmark remove-file" data-target="recommendationFile" title="Remove file"></i>
+            </div>
+          </div>
+        </div>
+
+        <label class="upload-btn" id="recommendationLabel">
+          <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+          <span class="upload-label-text">Upload</span>
+          <input type="file" id="recommendationFile" accept=".pdf,.doc,.docx" class="file-input-hidden">
+        </label>
+      </div>
+
+    </div>
+
+    <p id="docsError" style="display:none;color:#c0392b;margin:8px 0;font-size:14px;"></p>
+
+    <div class="form-nav">
+      <button type="button" class="previous-btn" id="prevBtn">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Previous</span>
+      </button>
+
+      <button type="button" class="next-btn" id="nextBtn">
+        <span>Next</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/documents.js"></script>
+
+</body>
+</html>

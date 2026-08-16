@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Training Plans</title>
+  <link rel="stylesheet" href="../CSS/reset.css">
+
+  <link rel="stylesheet" href="../CSS/training-plans.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+
+<body>
+
+<div class="admin-dashboard" id="dashboard">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ================= Sidebar ================= -->
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="logo-box">
+      <img
+        src="../images/logo.png"
+        class="side-logo"
+        alt="Saudia Academy"
+      />
+
+      <button class="sidebar-close" id="sidebarClose" title="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <nav class="side-menu">
+
+      <a href="admin-dashboard.html" class="menu-link">
+        <i class="fa-solid fa-house"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <a href="admin-applications.html" class="menu-link">
+        <i class="fa-solid fa-users"></i>
+        <span>Applications</span>
+      </a>
+
+      <a href="assign-supervisor.html" class="menu-link">
+        <i class="fa-solid fa-user-tie"></i>
+        <span>Supervisors</span>
+      </a>
+
+      <a href="training-plans.html" class="menu-link active">
+        <i class="fa-regular fa-calendar-check"></i>
+        <span>Training Plans</span>
+      </a>
+
+      <a href="admin-jobs.html" class="menu-link">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Jobs</span>
+      </a>
+
+      <a href="admin-settings.html" class="menu-link">
+        <i class="fa-solid fa-gear"></i>
+        <span>Settings</span>
+      </a>
+<a href="loading.html" class="menu-link" id="logoutBtn" data-logout>
+  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+  <span>Log Out</span>
+</a>
+      
+
+    </nav>
+
+  </aside>
+
+  <!-- ================= Main ================= -->
+
+  <main class="main">
+
+    <!-- Topbar -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" title="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <img src="../images/logo.png" class="topbar-logo" alt="Saudia Academy">
+      </div>
+
+      <div class="top-actions">
+
+
+        <div class="admin-user">
+          <i class="fa-regular fa-circle-user"></i>
+          <span id="adminName">Admin</span>
+        </div>
+
+      </div>
+
+    </header>
+
+    <!-- Content -->
+
+    <section class="content">
+
+      <div class="page-header">
+
+        <div>
+          <h1>Training Plans</h1>
+
+          <p>
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="add-btn"
+          id="openPlanModal"
+        >
+          <i class="fa-solid fa-plus"></i>
+          <span>Add Training Plan</span>
+        </button>
+
+      </div>
+
+      <!-- Training Plans List -->
+
+      <div class="list-card">
+
+        <div class="list-header">
+
+          <div>
+            <h2>Training Plans List</h2>
+
+            <p>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Plan Title</th>
+                <th>Major</th>
+                <th>Department</th>
+                <th>Training Term</th>
+                <th>Total Hours</th>
+                <th>PDF</th>
+                <th>Assigned Students</th>
+              </tr>
+            </thead>
+
+            <tbody id="plansTableBody">
+
+              <tr class="empty-row">
+
+                <td colspan="7">
+
+                  <div class="empty-state">
+
+                    <i class="fa-regular fa-folder-open"></i>
+
+                    <h3>No Training Plans Added Yet</h3>
+
+                    <p>
+                      Once you add training plans, they will appear in this table.
+                    </p>
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <div class="pagination" id="pagination"></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<!-- ================= Add Training Plan Modal ================= -->
+
+<div class="modal-overlay" id="planModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>Add Training Plan</h2>
+
+      <button
+        type="button"
+        class="close-modal"
+        id="closePlanModal"
+        aria-label="Close modal"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+    <div class="line"></div>
+
+    <form class="plan-form" id="planForm">
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="planTitle">
+            Plan Title
+          </label>
+
+          <input
+            id="planTitle"
+            name="planTitle"
+            type="text"
+            placeholder="Example: Software Engineering Standard Plan"
+            required
+          />
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="major">
+            Major
+          </label>
+
+          <select
+            id="major"
+            name="major"
+            required
+          >
+            <option value="" selected disabled>
+              Select a major
+            </option>
+
+            <option>Software Engineering</option>
+            <option>Computer Science</option>
+            <option>Information Technology</option>
+            <option>Information Systems</option>
+            <option>Cybersecurity</option>
+            <option>Data Science</option>
+            <option>Business Administration</option>
+            <option>Marketing</option>
+            <option>Accounting</option>
+            <option>Finance</option>
+            <option>Human Resources</option>
+            <option>Mechanical Engineering</option>
+            <option>Electrical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Industrial Engineering</option>
+            <option>Graphic Design</option>
+            <option>Nursing</option>
+            <option value="Other">Other</option>
+          </select>
+
+        
+
+        </div>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group" id="otherMajorField" style="display:none;">
+
+          <label for="otherMajor">
+            Other Major
+          </label>
+
+          <input
+            id="otherMajor"
+            name="otherMajor"
+            type="text"
+            placeholder="Enter the major"
+          />
+
+        </div>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="department">
+            Department
+          </label>
+
+          <input
+            id="department"
+            name="department"
+            type="text"
+            placeholder="Example: DMS"
+            required
+          />
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="trainingTerm">
+            Training Term
+          </label>
+
+          <input
+            id="trainingTerm"
+            name="trainingTerm"
+            type="text"
+            placeholder="Example: Summer 2026"
+            required
+          />
+
+        </div>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label for="totalHours">
+            Total Hours
+          </label>
+
+          <input
+            id="totalHours"
+            name="totalHours"
+            type="number"
+            min="1"
+            max="10000"
+            step="1"
+            placeholder="Example: 200"
+            required
+          />
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="planPdfInput">
+            Training Plan PDF
+          </label>
+
+          <label
+            class="file-upload"
+            for="planPdfInput"
+          >
+
+            <i class="fa-regular fa-file-pdf"></i>
+
+            <span id="pdfFileName">
+              Upload PDF file
+            </span>
+
+            <input
+              type="file"
+              id="planPdfInput"
+              name="planPdfInput"
+              accept="application/pdf"
+            />
+
+          </label>
+
+          <small class="field-error" id="pdfError" aria-live="polite"></small>
+
+        </div>
+
+      </div>
+
+    
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          id="cancelPlanModal"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="save-btn"
+          id="savePlanBtn"
+        >
+          <i class="fa-solid fa-check"></i>
+          <span>Save Training Plan</span>
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- ================= Manage Weekly Schedule Modal ================= -->
+
+<div class="modal-overlay" id="scheduleModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>Weekly Schedule — <span id="scheduleModalPlanTitle"></span></h2>
+
+      <button
+        type="button"
+        class="close-modal"
+        id="closeScheduleModal"
+        aria-label="Close modal"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+    <div class="line"></div>
+
+    <form id="scheduleForm">
+
+      <div id="weeksContainer"></div>
+
+      <button
+        type="button"
+        class="cancel-btn"
+        id="addWeekBtn"
+        style="margin:12px 0;"
+      >
+        <i class="fa-solid fa-plus"></i>
+        Add Week
+      </button>
+
+      <small class="field-error" id="scheduleError" aria-live="polite"></small>
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="cancel-btn"
+          id="cancelScheduleModal"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="save-btn"
+          id="saveScheduleBtn"
+        >
+          <i class="fa-solid fa-check"></i>
+          <span>Save Schedule</span>
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/training-plans.js"></script>
+
+</body>
+</html>

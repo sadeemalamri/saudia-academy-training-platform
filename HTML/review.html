@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Review Application</title>
+
+  <link rel="stylesheet" href="../CSS/reset.css">
+  <link rel="stylesheet" href="../CSS/review.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+</head>
+
+<body>
+
+<header class="app-header">
+  <img
+    src="../images/logo.png"
+    alt="Saudia Academy"
+    class="logo"
+  >
+</header>
+
+<main class="page">
+
+  <section class="title-section">
+    <h1>Application Form</h1>
+    <p>Step 4 of 4</p>
+  </section>
+
+  <section class="steps-card">
+
+    <div class="step active">
+      <div class="circle">1</div>
+      <span>Personal Info</span>
+    </div>
+
+    <div class="line active-line"></div>
+
+    <div class="step active">
+      <div class="circle">2</div>
+      <span>Academic Info</span>
+    </div>
+
+    <div class="line active-line"></div>
+
+    <div class="step active">
+      <div class="circle">3</div>
+      <span>Documents</span>
+    </div>
+
+    <div class="line active-line"></div>
+
+    <div class="step active">
+      <div class="circle">4</div>
+      <span>Review</span>
+    </div>
+
+  </section>
+
+  <section class="form-card">
+
+    <h2>Review Your Application</h2>
+
+    <p class="subtitle">
+      Please review your information before submission
+    </p>
+
+    <!-- Personal Information -->
+    <div class="review-box" data-section="personal">
+
+      <div class="review-icon">
+        <i class="fa-regular fa-user"></i>
+      </div>
+
+      <div class="review-content">
+
+        <div class="review-title">
+          <h3>Personal Information</h3>
+
+          <button
+            type="button"
+            class="edit-btn"
+            data-edit="personal"
+          >
+            Edit
+          </button>
+        </div>
+
+        <div class="view-mode">
+
+          <div class="info-grid">
+            <p>Full Name</p>
+            <span data-value="fullName"></span>
+
+            <p>National ID</p>
+            <span data-value="nationalId"></span>
+
+            <p>Email</p>
+            <span data-value="email"></span>
+
+            <p>Phone number</p>
+            <span data-value="phone"></span>
+          </div>
+
+        </div>
+
+        <div class="edit-mode">
+
+          <div class="edit-grid">
+
+            <div class="edit-field">
+              <label>Full Name</label>
+
+              <input
+                type="text"
+                data-input="fullName"
+                value=""
+                required
+              >
+            </div>
+
+            <div class="edit-field">
+              <label>National ID</label>
+
+              <input
+                type="text"
+                data-input="nationalId"
+                value=""
+                maxlength="10"
+                required
+              >
+            </div>
+
+            <div class="edit-field">
+              <label>Email</label>
+
+              <input
+                type="email"
+                data-input="email"
+                value=""
+                required
+              >
+            </div>
+
+            <div class="edit-field">
+              <label>Phone Number</label>
+
+              <input
+                type="text"
+                data-input="phone"
+                value=""
+                maxlength="12"
+                required
+              >
+            </div>
+
+          </div>
+
+          <div class="section-actions">
+
+            <button
+              type="button"
+              class="cancel-btn"
+              data-cancel="personal"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              class="save-btn"
+              data-save="personal"
+            >
+              Save
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Education Information -->
+    <div class="review-box" data-section="education">
+
+      <div class="review-icon">
+        <i class="fa-regular fa-pen-to-square"></i>
+      </div>
+
+      <div class="review-content">
+
+        <div class="review-title">
+
+          <h3>Education Information</h3>
+
+          <button
+            type="button"
+            class="edit-btn"
+            data-edit="education"
+          >
+            Edit
+          </button>
+
+        </div>
+
+        <div class="view-mode">
+
+          <div class="info-grid">
+
+            <p>University</p>
+            <span data-value="university"></span>
+
+            <p>Program</p>
+            <span data-value="major"></span>
+
+            <p>Study Level</p>
+            <span data-value="studyLevel"></span>
+
+            <p>GPA</p>
+            <span data-value="gpa"></span>
+
+            <p>Training Period</p>
+            <span data-value="trainingPeriod"></span>
+
+          </div>
+
+        </div>
+
+        <div class="edit-mode">
+
+          <div class="edit-grid">
+
+            <div class="edit-field">
+
+              <label>University</label>
+
+              <select
+                data-input="university"
+                id="reviewUniversity"
+                required
+              >
+                <option value="">
+                  Select your university
+                </option>
+
+                <option>
+                  University of Jeddah
+                </option>
+
+                <option>
+                  King Abdulaziz University
+                </option>
+
+                <option>
+                  Umm Al-Qura University
+                </option>
+
+                <option>
+                  King Saud University
+                </option>
+
+                <option>
+                  Princess Nourah University
+                </option>
+
+                <option>
+                  Imam Abdulrahman Bin Faisal University
+                </option>
+
+                <option>
+                  Taibah University
+                </option>
+
+                <option>
+                  Taif University
+                </option>
+
+                <option value="Other">
+                  Other
+                </option>
+              </select>
+
+            </div>
+
+            <div
+              class="edit-field"
+              id="reviewOtherUniversityField"
+              style="display: none;"
+            >
+
+              <label>Other University</label>
+
+              <input
+                type="text"
+                id="reviewOtherUniversity"
+                placeholder="Enter your university"
+              >
+
+            </div>
+
+            <div class="edit-field">
+
+              <label>Program</label>
+
+              <input
+                type="text"
+                data-input="major"
+                value=""
+                required
+              >
+
+            </div>
+
+            <div class="edit-field">
+
+              <label>Study Level</label>
+
+              <select
+                data-input="studyLevel"
+                required
+              >
+                <option value="">
+                  Select your level
+                </option>
+
+                <option>3rd Year</option>
+                <option>4th Year</option>
+                <option>5th Year</option>
+                <option>Graduate</option>
+              </select>
+
+            </div>
+
+            <div class="edit-field">
+
+              <label>GPA</label>
+
+              <input
+                type="text"
+                data-input="gpa"
+                value=""
+                required
+              >
+
+            </div>
+
+            <div class="edit-field wide">
+
+              <label>Training Period</label>
+
+              <input
+                type="text"
+                data-input="trainingPeriod"
+                value=""
+                required
+              >
+
+            </div>
+
+          </div>
+
+          <div class="section-actions">
+
+            <button
+              type="button"
+              class="cancel-btn"
+              data-cancel="education"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              class="save-btn"
+              data-save="education"
+            >
+              Save
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Uploaded Documents -->
+    <div class="review-box" data-section="documents">
+
+      <div class="review-icon">
+        <i class="fa-regular fa-file-lines"></i>
+      </div>
+
+      <div class="review-content">
+
+        <div class="review-title">
+
+          <h3>Uploaded Documents</h3>
+
+          <button
+            type="button"
+            class="edit-btn"
+            data-edit="documents"
+          >
+            Edit
+          </button>
+
+        </div>
+
+        <div class="view-mode">
+
+          <div class="info-grid">
+
+            <p>CV / Resume</p>
+            <span data-value="cv"></span>
+
+            <p>Academic Transcript</p>
+            <span data-value="transcript"></span>
+
+            <p>Certificates</p>
+            <span data-value="certificates"></span>
+
+            <p>Recommendation Letter</p>
+            <span data-value="recommendation"></span>
+
+          </div>
+
+        </div>
+
+        <div class="edit-mode">
+
+          <div class="edit-grid">
+
+            <div class="edit-field">
+
+              <label>CV / Resume</label>
+
+              <div
+                class="review-upload"
+                data-doc="cv"
+              >
+
+                <label class="upload-btn">
+
+                  <i
+                    class="fa-solid fa-cloud-arrow-up upload-icon"
+                  ></i>
+
+                  <span class="upload-label-text">
+                    Upload
+                  </span>
+
+                  <input
+                    type="file"
+                    data-input="cv"
+                    accept=".pdf,.doc,.docx"
+                    hidden
+                    required
+                  >
+
+                </label>
+
+                <div class="file-name-row">
+
+                  <p class="file-name"></p>
+
+                  <i
+                    class="fa-solid fa-xmark remove-file"
+                    title="Remove file"
+                  ></i>
+
+                </div>
+
+                <p class="doc-error">
+                  Please upload this document.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="edit-field">
+
+              <label>Academic Transcript</label>
+
+              <div
+                class="review-upload"
+                data-doc="transcript"
+              >
+
+                <label class="upload-btn">
+
+                  <i
+                    class="fa-solid fa-cloud-arrow-up upload-icon"
+                  ></i>
+
+                  <span class="upload-label-text">
+                    Upload
+                  </span>
+
+                  <input
+                    type="file"
+                    data-input="transcript"
+                    accept=".pdf,.doc,.docx"
+                    hidden
+                    required
+                  >
+
+                </label>
+
+                <div class="file-name-row">
+
+                  <p class="file-name"></p>
+
+                  <i
+                    class="fa-solid fa-xmark remove-file"
+                    title="Remove file"
+                  ></i>
+
+                </div>
+
+                <p class="doc-error">
+                  Please upload this document.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="edit-field">
+
+              <label>Certificates</label>
+
+              <div
+                class="review-upload"
+                data-doc="certificates"
+              >
+
+                <label class="upload-btn">
+
+                  <i
+                    class="fa-solid fa-cloud-arrow-up upload-icon"
+                  ></i>
+
+                  <span class="upload-label-text">
+                    Upload
+                  </span>
+
+                  <input
+                    type="file"
+                    data-input="certificates"
+                    accept=".pdf,.doc,.docx"
+                    hidden
+                    required
+                  >
+
+                </label>
+
+                <div class="file-name-row">
+
+                  <p class="file-name"></p>
+
+                  <i
+                    class="fa-solid fa-xmark remove-file"
+                    title="Remove file"
+                  ></i>
+
+                </div>
+
+                <p class="doc-error">
+                  Please upload this document.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="edit-field">
+
+              <label>
+                Recommendation Letter
+
+                <span
+                  style="font-weight: 400; color: #999;"
+                >
+                  (Optional)
+                </span>
+              </label>
+
+              <div
+                class="review-upload"
+                data-doc="recommendation"
+              >
+
+                <label class="upload-btn">
+
+                  <i
+                    class="fa-solid fa-cloud-arrow-up upload-icon"
+                  ></i>
+
+                  <span class="upload-label-text">
+                    Upload
+                  </span>
+
+                  <input
+                    type="file"
+                    data-input="recommendation"
+                    accept=".pdf,.doc,.docx"
+                    hidden
+                  >
+
+                </label>
+
+                <div class="file-name-row">
+
+                  <p class="file-name"></p>
+
+                  <i
+                    class="fa-solid fa-xmark remove-file"
+                    title="Remove file"
+                  ></i>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="section-actions">
+
+            <button
+              type="button"
+              class="cancel-btn"
+              data-cancel="documents"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              class="save-btn"
+              data-save="documents"
+            >
+              Save
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <p id="submitError" style="display:none;color:#c0392b;margin:8px 0;font-size:14px;"></p>
+
+  <div class="form-nav">
+
+      <button
+        type="button"
+        class="previous-btn"
+        onclick="window.location.href='documents.html'"
+      >
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Previous</span>
+      </button>
+
+      <button
+        type="button"
+        class="submit-btn"
+        id="submitBtn"
+      >
+        <span>Submit Application</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../JS/config.js"></script>
+<script src="../JS/supabaseClient.js"></script>
+<script src="../JS/review.js"></script>
+
+</body>
+</html>
