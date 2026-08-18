@@ -2,14 +2,11 @@
 // Supabase Client
 // ===============================================================
 
-if (!window.APP_CONFIG) {
-  throw new Error(
-    "Missing config.js. Copy JS/config.example.js to JS/config.js and add your Supabase credentials."
-  );
-}
+const SUPABASE_URL =
+  "https://xrugicrmtqzxohjbueoi.supabase.co";
 
-const SUPABASE_URL = window.APP_CONFIG.SUPABASE_URL;
-const SUPABASE_ANON_KEY = window.APP_CONFIG.SUPABASE_ANON_KEY;
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhydWdpY3JtdHF6eG9oamJ1ZW9pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ0NTU3MDgsImV4cCI6MjEwMDAzMTcwOH0.CSu0e7tBXtPH0HEN610pbzEdfXOtQA4CIZmn5vdoEaU";
 
 const sb = supabase.createClient(
   SUPABASE_URL,

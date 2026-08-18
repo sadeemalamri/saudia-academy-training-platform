@@ -41,7 +41,7 @@ select {
   position: relative;
 }
 
-/* ================= SIDEBAR (off-canvas drawer) ================= */
+/* ================= SIDEBAR ================= */
 
 .sidebar {
   position: fixed;
@@ -96,7 +96,6 @@ select {
   background: rgba(255,255,255,.3);
 }
 
-/* Dark backdrop behind the drawer */
 
 .sidebar-overlay {
   position: fixed;
@@ -197,7 +196,6 @@ select {
   background: rgba(255,255,255,.28);
 }
 
-/* This logo lives in the topbar — only shown while the drawer mode is active (small screens) */
 
 .topbar-logo {
   height: 60px;
@@ -794,8 +792,7 @@ select {
 
 /* ================= Responsive ================= */
 
-/* Desktop: sidebar stays permanently visible like before,
-   no hamburger, no overlay, no duplicate topbar logo */
+
 @media (min-width: 901px) {
   .sidebar {
     transform: translateX(0);

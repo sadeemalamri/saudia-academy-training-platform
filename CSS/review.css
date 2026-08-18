@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family:'Inter', Arial, sans-serif;
 }
 
 :root{
@@ -13,7 +15,7 @@
   --text:#111;
   --muted:#777;
   --line:#e6e6e6;
-  --border:#dddddd;
+  --border:#ddd;
   --shadow:0 10px 25px rgba(0,0,0,.12);
 }
 
@@ -28,7 +30,6 @@ body{
   border-bottom:1px solid #e5e5e5;
   display:flex;
   align-items:center;
-  justify-content:flex-start;
   padding-left:20px;
 }
 
@@ -41,16 +42,18 @@ body{
 }
 
 .title-section h1{
-  font-size:34px;
+  font-size:32px;
   font-weight:700;
   margin-bottom:8px;
 }
 
 .title-section p{
   color:#aaa;
-  font-size:19px;
-  font-weight:600;
+  font-size:17px;
+  font-weight:500;
 }
+
+/* ================= STEPPER ================= */
 
 .steps-card{
   width:86%;
@@ -68,6 +71,7 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:flex-start;
   gap:12px;
   min-width:120px;
 }
@@ -81,8 +85,9 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:22px;
+  font-size:20px;
   font-weight:700;
+  flex-shrink:0;
 }
 
 .step.active .circle{
@@ -92,18 +97,23 @@ body{
 .step span{
   font-size:14px;
   font-weight:600;
+  line-height:1.2;
+  white-space:nowrap;
+  text-align:center;
 }
 
 .line{
   height:4px;
   width:170px;
   background:var(--line);
-  margin:0 8px 35px;
+  margin:0 8px 31px;
 }
 
 .active-line{
   background:var(--green);
 }
+
+/* ================= CARD ================= */
 
 .form-card{
   width:86%;
@@ -112,20 +122,21 @@ body{
   border-radius:12px;
   box-shadow:var(--shadow);
   padding:45px;
-  position:relative;
 }
 
 .form-card h2{
-  font-size:30px;
+  font-size:28px;
   font-weight:700;
   margin-bottom:6px;
 }
 
 .subtitle{
   color:var(--muted);
-  font-size:16px;
+  font-size:15px;
   margin-bottom:30px;
 }
+
+/* ================= REVIEW ================= */
 
 .review-box{
   width:100%;
@@ -136,13 +147,10 @@ body{
   display:flex;
   gap:20px;
   background:#fff;
-  position:relative;
-  overflow:visible;
-  transition:.3s ease;
+  transition:.35s ease;
 }
 
 .review-box.editing{
-  min-height:auto;
   padding-bottom:30px;
 }
 
@@ -154,24 +162,25 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:30px;
-  color:#111;
+  font-size:28px;
   flex-shrink:0;
 }
 
 .review-content{
-  width:100%;
+  flex:1;
+  min-width:0;
 }
 
 .review-title{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:15px;
   margin-bottom:14px;
 }
 
 .review-title h3{
-  font-size:24px;
+  font-size:22px;
   font-weight:500;
 }
 
@@ -179,14 +188,9 @@ body{
   background:none;
   border:none;
   color:#286bff;
-  font-size:15px;
+  font-size:14px;
   font-weight:700;
   cursor:pointer;
-  padding:0;
-}
-
-.edit-btn:hover{
-  text-decoration:underline;
 }
 
 .info-grid{
@@ -198,11 +202,7 @@ body{
 .info-grid p,
 .info-grid span{
   color:#6f7785;
-  font-size:15px;
-  font-weight:700;
-}
-
-.info-grid span{
+  font-size:14px;
   font-weight:600;
 }
 
@@ -214,7 +214,6 @@ body{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:16px 28px;
-  margin-top:8px;
 }
 
 .edit-field{
@@ -223,14 +222,13 @@ body{
 }
 
 .edit-field.wide{
-  grid-column:1 / 3;
+  grid-column:1/3;
 }
 
 .edit-field label{
   font-size:14px;
-  font-weight:700;
+  font-weight:600;
   margin-bottom:8px;
-  color:#333;
 }
 
 .edit-field input,
@@ -241,29 +239,8 @@ body{
   border-radius:8px;
   padding:0 16px;
   font-size:14px;
-  color:#555;
   outline:none;
   background:#fff;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  overflow:hidden;
-}
-
-.edit-field select{
-  appearance:none;
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  padding-right:45px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23777777' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 16px center;
-  background-size:14px;
-}
-
-.edit-field input:focus,
-.edit-field select:focus{
-  border-color:var(--green);
-  box-shadow:0 0 0 3px rgba(0,122,61,.12);
 }
 
 .section-actions{
@@ -271,7 +248,6 @@ body{
   justify-content:flex-end;
   gap:12px;
   margin-top:28px;
-  padding-bottom:0;
 }
 
 .cancel-btn,
@@ -283,7 +259,6 @@ body{
   font-size:14px;
   font-weight:700;
   cursor:pointer;
-  padding:0 20px;
 }
 
 .cancel-btn{
@@ -291,17 +266,9 @@ body{
   color:#fff;
 }
 
-.cancel-btn:hover{
-  background:#c8c8c8;
-}
-
 .save-btn{
   background:var(--green);
   color:#fff;
-}
-
-.save-btn:hover{
-  background:var(--green-hover);
 }
 
 .form-nav{
@@ -311,47 +278,29 @@ body{
   margin-top:40px;
 }
 
-.previous-btn,
-.submit-btn{
+.previous-btn{
+  width:170px;
   height:58px;
   border:none;
   border-radius:10px;
-  font-size:16px;
-  font-weight:700;
-  cursor:pointer;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-  transition:.3s;
-}
-
-.previous-btn{
-  width:170px;
   background:#d5d5d5;
   color:#fff;
-}
-
-.previous-btn:hover{
-  background:#b8b8b8;
+  font-size:15px;
+  font-weight:600;
 }
 
 .submit-btn{
   width:230px;
+  height:58px;
+  border:none;
+  border-radius:10px;
   background:var(--green);
   color:#fff;
+  font-size:15px;
+  font-weight:600;
 }
 
-.submit-btn:hover{
-  background:var(--green-hover);
-}
-
-.previous-btn i,
-.submit-btn i{
-  font-size:14px;
-}
-
-/* ================= DOCUMENT UPLOAD (Review > Edit) ================= */
+/* ================= REVIEW UPLOAD ================= */
 
 .review-upload{
   display:flex;
@@ -369,81 +318,14 @@ body{
   justify-content:center;
   gap:8px;
   font-size:14px;
-  font-weight:700;
-  cursor:pointer;
+  font-weight:600;
   background:#fff;
-  transition:.3s;
-  color:#333;
-}
-
-.review-upload .upload-btn:hover{
-  border-color:var(--green);
-  color:var(--green);
-}
-
-.review-upload.uploaded .upload-btn{
-  border-color:var(--green);
-  color:var(--green);
-  background:var(--soft-green);
-}
-
-.file-name-row{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.file-name{
-  max-width:220px;
-  font-size:13px;
-  font-weight:600;
-  color:var(--green);
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  direction:rtl;
-  unicode-bidi:plaintext;
-  text-align:left;
-}
-
-.file-name:empty{
-  display:none;
-}
-
-.review-upload .remove-file{
-  display:none;
-  color:#999;
-  font-size:12px;
   cursor:pointer;
-  transition:.2s;
 }
 
-.review-upload .remove-file:hover{
-  color:#e34848;
-}
+/* ================= TABLET ================= */
 
-.review-upload.uploaded .remove-file{
-  display:inline-block;
-}
-
-.doc-error{
-  color:#e34848;
-  font-size:12px;
-  font-weight:600;
-  display:none;
-}
-
-.review-upload.missing .doc-error{
-  display:block;
-}
-
-.review-upload.missing .upload-btn{
-  border-color:#e34848;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:900px){
+@media(max-width:900px){
 
   .page{
     padding:22px 24px;
@@ -451,12 +333,11 @@ body{
 
   .steps-card{
     width:100%;
-    padding:20px 30px;
-    overflow-x:auto;
+    padding:20px 24px;
   }
 
   .line{
-    width:90px;
+    width:80px;
   }
 
   .form-card{
@@ -471,22 +352,23 @@ body{
   .edit-field.wide{
     grid-column:1;
   }
-
 }
 
-@media (max-width:600px){
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
 
   .app-header{
     height:70px;
-    padding-left:16px;
+    padding-left:14px;
   }
 
   .logo{
-    width:65px;
+    width:62px;
   }
 
   .page{
-    padding:18px 16px;
+    padding:18px 12px;
   }
 
   .title-section h1{
@@ -498,13 +380,16 @@ body{
   }
 
   .steps-card{
-    padding:16px 20px;
-    gap:6px;
+    width:100%;
+    padding:16px 8px;
+    gap:0;
+    overflow:visible;
   }
 
   .step{
     min-width:70px;
-    gap:6px;
+    flex:0 0 70px;
+    gap:7px;
   }
 
   .circle{
@@ -514,15 +399,23 @@ body{
   }
 
   .step span{
-    font-size:11px;
+    font-size:10px;
+    line-height:1.15;
+    white-space:nowrap;
+    text-align:center;
   }
 
   .line{
-    width:36px;
-    margin:0 4px 24px;
+    width:auto;
+    min-width:12px;
+    max-width:28px;
+    flex:1 1 20px;
+    height:3px;
+    margin:0 2px 24px;
   }
 
   .form-card{
+    width:100%;
     padding:22px 16px;
   }
 
@@ -531,45 +424,45 @@ body{
   }
 
   .review-box{
-    flex-direction:column;
-    gap:14px;
-    padding:18px;
+    gap:12px;
+    padding:16px;
   }
 
   .review-icon{
-    width:46px;
-    height:46px;
-    font-size:22px;
+    width:44px;
+    height:44px;
+    font-size:21px;
   }
 
   .review-title h3{
-    font-size:19px;
+    font-size:17px;
+  }
+
+  .edit-btn{
+    font-size:12px;
   }
 
   .info-grid{
-    grid-template-columns:1fr;
-    row-gap:4px;
+    grid-template-columns:120px 1fr;
+    column-gap:8px;
   }
 
-  .info-grid p{
-    margin-top:8px;
+  .info-grid p,
+  .info-grid span{
+    font-size:12px;
   }
 
   .section-actions{
-    flex-direction:column-reverse;
+    gap:8px;
   }
 
   .cancel-btn,
   .save-btn{
-    width:100%;
+    min-width:90px;
   }
 
   .review-upload .upload-btn{
     width:100%;
-  }
-
-  .file-name{
-    max-width:160px;
   }
 
   .form-nav{
@@ -581,6 +474,36 @@ body{
   .previous-btn,
   .submit-btn{
     width:100%;
+    height:52px;
+  }
+}
+
+@media(max-width:400px){
+
+  .step{
+    min-width:66px;
+    flex-basis:66px;
   }
 
+  .step span{
+    font-size:9px;
+  }
+
+  .line{
+    min-width:8px;
+    max-width:22px;
+  }
+
+  .review-box{
+    flex-direction:column;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+    row-gap:4px;
+  }
+
+  .info-grid p{
+    margin-top:7px;
+  }
 }

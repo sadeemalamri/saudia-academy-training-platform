@@ -171,9 +171,6 @@ img { display: block; max-width: 100%; }
   color: var(--text);
   font-size: 18px;
 }
-
-/* Login link inside the mobile dropdown — hidden on desktop since
-   the .login-btn in .nav-buttons already covers that case there */
 .mobile-login-link {
   display: none;
 }
@@ -636,7 +633,6 @@ img { display: block; max-width: 100%; }
   padding-bottom: 100px;
 }
 
-/* عنوان القسم */
 
 .details-intro {
   max-width: 760px;
@@ -661,7 +657,6 @@ img { display: block; max-width: 100%; }
 }
 
 
-/* الصورة والخيارات */
 
 .details-showcase {
   display: grid;
@@ -671,7 +666,6 @@ img { display: block; max-width: 100%; }
 }
 
 
-/* الصورة */
 
 .details-image-panel {
   position: relative;
@@ -704,7 +698,6 @@ img { display: block; max-width: 100%; }
 }
 
 
-/* التظليل أسفل الصورة */
 
 .details-image-overlay {
   position: absolute;
@@ -737,7 +730,6 @@ img { display: block; max-width: 100%; }
 }
 
 
-/* قائمة الخيارات */
 
 .details-options {
   height: 520px;
@@ -748,7 +740,6 @@ img { display: block; max-width: 100%; }
 }
 
 
-/* الخيار */
 
 .program-detail-item {
   position: relative;
@@ -780,7 +771,6 @@ img { display: block; max-width: 100%; }
     transform 0.25s ease;
 }
 
-/* الخط العلوي الكامل */
 
 .program-detail-item::before {
   content: "";
@@ -811,7 +801,6 @@ img { display: block; max-width: 100%; }
 }
 
 
-/* الخيار النشط */
 
 .program-detail-item.active {
   border-color: rgba(0, 122, 61, 0.42);
@@ -823,7 +812,6 @@ img { display: block; max-width: 100%; }
 }
 
 
-/* الأيقونة */
 
 .detail-item-icon {
   width: 52px;
@@ -853,7 +841,6 @@ img { display: block; max-width: 100%; }
 }
 
 
-/* النص */
 
 .detail-item-content span {
   display: block;
@@ -1298,7 +1285,6 @@ footer i {
   }
 }
 
-/* Space between Hero and Why Saudia Academy */
 #about.features {
   margin-top: 70px;
   padding-top: 0;
@@ -1326,7 +1312,6 @@ footer i {
   background: #f7f9f8;
 }
 
-/* صورة الخلفية */
 
 .login-page .login-bg {
   position: absolute;
@@ -1342,7 +1327,6 @@ footer i {
   z-index: 0;
 }
 
-/* تدرج أبيض بين الصورة والفورم */
 
 .login-page::after {
   content: "";
@@ -1361,7 +1345,6 @@ footer i {
   pointer-events: none;
 }
 
-/* بطاقة تسجيل الدخول */
 
 .login-page .login-card {
   position: relative;
@@ -1379,7 +1362,6 @@ footer i {
   backdrop-filter: blur(12px);
 }
 
-/* الشعار */
 
 .login-page .login-logo {
   width: 94px;
@@ -1389,7 +1371,6 @@ footer i {
   object-fit: contain;
 }
 
-/* العنوان */
 
 .login-page .login-card h1 {
   margin-bottom: 8px;
@@ -1409,7 +1390,6 @@ footer i {
   line-height: 1.5;
 }
 
-/* الفورم */
 
 .login-page #loginForm {
   width: 100%;
@@ -1458,7 +1438,6 @@ footer i {
   box-shadow: 0 0 0 4px rgba(0, 122, 61, 0.1);
 }
 
-/* أيقونات الحقول */
 
 .login-page .input-box > i:first-child {
   position: absolute;
@@ -1484,7 +1463,6 @@ footer i {
   cursor: pointer;
 }
 
-/* نسيت كلمة المرور */
 
 .login-page .forgot {
   width: fit-content;
@@ -1502,7 +1480,6 @@ footer i {
   text-decoration: underline;
 }
 
-/* زر الدخول */
 
 .login-page .login-submit {
   width: 100%;
@@ -1529,7 +1506,6 @@ footer i {
   box-shadow: 0 12px 25px rgba(0, 122, 61, 0.2);
 }
 
-/* إنشاء حساب */
 
 .login-page .create-text {
   margin-top: 24px;

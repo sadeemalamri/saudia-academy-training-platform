@@ -1,7 +1,5 @@
 /* ================= Application Overview + Documents ================= */
-/* This file is intentionally shared by application-overview.html and
-   application-documents.html. Every page-specific element is checked
-   before it is used. */
+
 
 const urlParams = new URLSearchParams(window.location.search);
 const applicationId = urlParams.get("id");
@@ -130,9 +128,6 @@ function showMissingApplication(message) {
   }
 }
 
-// Prefer the student's current profile name (always up to date, since
-// students can edit it in Settings) — fall back to the name captured
-// on the application itself only if the profile is missing for some reason.
 function getDisplayName(app) {
   const profileName = app.profiles?.full_name?.trim();
   if (profileName) return profileName;
@@ -158,7 +153,6 @@ function populateApplication(app) {
     statusBadge.textContent = formatStatus(app.status);
   }
 
-  // Overview-only fields. These calls are harmless on the Documents page.
   setText("infoFullName", fullName);
   setText("infoDob", formatDate(app.dob));
   setText("infoGender", app.gender);
@@ -180,7 +174,6 @@ function populateApplication(app) {
   const studentMajorInput = getElement("studentMajor");
   if (studentMajorInput) studentMajorInput.value = app.major || "";
 
-  // A completed application decision should not show Accept / Reject again.
   if (app.status !== "pending") {
     const actionsCard = document.querySelector(".actions-card");
     if (actionsCard) actionsCard.style.display = "none";
@@ -881,8 +874,7 @@ async function loadTrainingPlanOptions(major) {
     return;
   }
 
-  // Try to find the plan whose major matches this student's exactly,
-  // so it's pre-selected — but the admin can still pick a different one.
+  
   const matchedPlan = allTrainingPlans.find((plan) => plan.major === major);
 
   standardPlanSelect.innerHTML = '<option value="" disabled>Select a training plan</option>';

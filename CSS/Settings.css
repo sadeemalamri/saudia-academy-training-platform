@@ -649,88 +649,6 @@ input::-ms-clear {
   background: #007A3D;
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 900px) {
-  .sidebar {
-    width: 78vw;
-    max-width: 280px;
-  }
-
-  .topbar {
-    padding: 0 20px;
-  }
-
-  .topbar-logo {
-    height: 36px;
-  }
-
-  .content {
-    padding: 40px 30px;
-  }
-
-  .profile-card {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .profile-left {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid #ddd;
-    padding: 0 0 25px;
-    margin-bottom: 25px;
-  }
-
-  .profile-right {
-    padding-left: 0;
-  }
-
-  .profile-right h2 {
-    font-size: 24px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .form-row label {
-    text-align: left;
-  }
-
-  .form-row input,
-  .input-with-icon,
-  .language-select {
-    max-width: 100%;
-  }
-
-  .button-area {
-    justify-content: center;
-  }
-
-  .save-btn {
-    width: 100%;
-  }
-
-  .password-modal {
-    max-width: 92%;
-    padding: 24px 22px 30px;
-  }
-
-  .modal-buttons {
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 35px;
-    padding: 0;
-  }
-
-  .cancel-btn,
-  .update-btn {
-    width: 100%;
-  }
-}
-
 /* =========================
    Student Notifications
 ========================= */
@@ -941,20 +859,87 @@ input::-ms-clear {
   border-radius: 20px;
 }
 
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .sidebar { width: 78vw; max-width: 280px; }
+  .topbar { height: 86px; padding: 0 16px; gap: 10px; }
+  .topbar-left { gap: 10px; min-width: 0; }
+  .menu-toggle { width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0; }
+  .topbar-logo { height: 34px; width: auto; flex-shrink: 0; }
+  .user { gap: 8px; font-size: 15px; font-weight: 600; min-width: 0; flex-shrink: 1; }
+  .user-circle { width: 38px; height: 38px; }
+  .user-circle i { font-size: 17px; }
+  .user span, .user-name { max-width: 130px; white-space: normal; line-height: 1.2; overflow-wrap: anywhere; }
+  .notification-btn { width: 38px; height: 38px; flex-shrink: 0; }
+  .notification-btn i { font-size: 18px; }
+  .content { padding: 28px 16px 40px; }
+  .page-title { width: 100%; margin: 0 0 18px; }
+  .page-title h1 { font-size: 28px; margin-bottom: 6px; }
+  .page-title p { font-size: 14px; }
+  .profile-card { width: 100%; padding: 24px 18px 28px; border-radius: 12px; }
+  .profile-body { flex-direction: column; width: 100%; }
+  .profile-left { width: 100%; border-right: none; border-bottom: 1px solid #e6e6e6; padding: 0 0 24px; margin-bottom: 24px; align-self: auto; }
+  .avatar-circle { width: 120px; height: 120px; }
+  .avatar-circle i { font-size: 50px; }
+  .profile-right { width: 100%; padding-left: 0; min-width: 0; }
+  .profile-right h2 { font-size: 24px; margin-bottom: 28px; }
+  .profile-form { width: 100%; }
+  .form-row { width: 100%; min-height: auto; grid-template-columns: 1fr; gap: 8px; margin-bottom: 20px; }
+  .form-row label { text-align: left; font-size: 14px; }
+  .form-row input, .input-with-icon, .date-box, .language-select { width: 100%; max-width: none; }
+  .form-row input, .date-box input[type='date'], .language-select { height: 48px; font-size: 14px; }
+  .input-with-icon input { width: 100%; }
+  .button-area { width: 100%; justify-content: center; margin-top: 32px; }
+  .save-btn { width: 100%; height: 52px; font-size: 15px; }
+  .password-modal { width: calc(100% - 28px); max-width: 520px; padding: 24px 20px 28px; }
+  .password-modal h2 { font-size: 24px; }
+  .modal-buttons { flex-direction: column; gap: 12px; margin-top: 32px; padding: 0; }
+  .cancel-btn, .update-btn { width: 100%; }
+}
+
 @media (max-width: 600px) {
-  .notification-dropdown {
-    position: fixed;
-    top: 80px;
-    right: 12px;
-    left: 12px;
-    width: auto;
-  }
+  .topbar { height: 82px; padding: 0 10px; }
+  .topbar-left { gap: 7px; }
+  .menu-toggle { width: 40px; height: 40px; font-size: 16px; }
+  .topbar-logo { height: 27px; }
+  .notification-btn { width: 34px; height: 34px; }
+  .notification-btn i { font-size: 17px; }
+  .notification-badge { top: 0; right: 0; min-width: 16px; height: 16px; padding: 0 4px; font-size: 9px; }
+  .user { gap: 5px; font-size: 13px; }
+  .user-circle { width: 34px; height: 34px; }
+  .user-circle i { font-size: 15px; }
+  .user span, .user-name { max-width: 92px; font-size: 13px; line-height: 1.15; }
+  .content { padding: 22px 12px 34px; }
+  .page-title { margin-bottom: 16px; }
+  .page-title h1 { font-size: 25px; }
+  .page-title p { font-size: 13px; }
+  .profile-card { padding: 20px 14px 24px; }
+  .profile-left { padding-bottom: 20px; margin-bottom: 20px; }
+  .avatar-circle { width: 104px; height: 104px; }
+  .avatar-circle i { font-size: 44px; }
+  .profile-right h2 { font-size: 21px; margin-bottom: 22px; }
+  .form-row { gap: 7px; margin-bottom: 17px; }
+  .form-row label { font-size: 13px; }
+  .form-row input, .date-box input[type='date'], .language-select { height: 46px; padding-left: 15px; padding-right: 15px; font-size: 13px; }
+  .input-with-icon input { padding-right: 42px; }
+  .input-with-icon i, .date-box .calendar-icon { right: 14px; }
+  .button-area { margin-top: 26px; }
+  .save-btn { height: 50px; font-size: 14px; }
+  .notification-dropdown { position: fixed; top: 74px; right: 10px; left: 10px; width: auto; max-height: calc(100vh - 94px); }
+  .notification-header { padding: 14px; }
+  .notification-item { padding: 13px 32px 13px 13px; }
+}
 
-  .notification-header {
-    padding: 15px;
-  }
-
-  .notification-item {
-    padding: 14px 34px 14px 14px;
-  }
+@media (max-width: 420px) {
+  .topbar { padding: 0 8px; }
+  .topbar-left { gap: 5px; }
+  .menu-toggle { width: 38px; height: 38px; }
+  .topbar-logo { height: 24px; }
+  .notification-btn { width: 31px; height: 31px; }
+  .user-circle { width: 32px; height: 32px; }
+  .user span, .user-name { max-width: 78px; font-size: 12px; }
+  .content { padding-left: 10px; padding-right: 10px; }
+  .profile-card { padding-left: 12px; padding-right: 12px; }
+  .page-title h1 { font-size: 23px; }
 }

@@ -1,5 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+const WEBHOOK_URL =
+  "https://hala7.app.n8n.cloud/webhook/b0d1af9f-cd4f-4c6e-9db0-a6c205c3d6e9/chat";
 
+const SESSION_KEY = "saudia-academy-chat-session";
+
+let sessionId = sessionStorage.getItem(SESSION_KEY);
+
+if (!sessionId) {
+  sessionId = crypto.randomUUID();
+  sessionStorage.setItem(SESSION_KEY, sessionId);
+}
   const chatToggle = document.getElementById("chatToggle");
   const chatWindow = document.getElementById("chatWindow");
   const chatClose = document.getElementById("chatClose");
@@ -195,37 +205,65 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  function sendMessage(text) {
-    if (!text.trim()) return;
+async function sendMessage(text) {
+  const message = text.trim();
 
-    addMessage(text, "user");
-    showTyping();
+  if (!message) return;
 
-    setTimeout(() => {
-      removeTyping();
+  addMessage(message, "user");
+  showTyping();
 
-      const reply = getBotReply(text);
-      addMessage(reply.text, "bot");
+  chatSend.disabled = true;
+  chatInput.disabled = true;
 
-      if (reply.type === "farewell") {
-        // Say goodbye and close the window — no need to show more options.
-        setTimeout(() => {
-          closeChat();
-        }, 1600);
-      } else if (reply.type === "answer") {
-        // A real answer was given — ask if there's anything else, then
-        // show the options again.
-        setTimeout(appendFollowUp, 500);
-      } else {
-        // Greeting or fallback — just show the available options directly,
-        // no need for an extra "anything else?" line first.
-        setTimeout(() => {
-          chatBody.appendChild(createQuickReplies());
-          chatBody.scrollTop = chatBody.scrollHeight;
-        }, 500);
-      }
-    }, 900);
+  try {
+    const response = await fetch(WEBHOOK_URL, {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+        action: "sendMessage",
+        sessionId: sessionId,
+        chatInput: message
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`Request failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    const botReply =
+      data.output ||
+      data.text ||
+      data.message ||
+      data?.data?.output ||
+      (Array.isArray(data) ? data[0]?.output : null) ||
+      "Sorry, I couldn't understand the response.";
+
+    removeTyping();
+    addMessage(botReply, "bot");
+
+  } catch (error) {
+    console.error("Chatbot error:", error);
+
+    removeTyping();
+
+    addMessage(
+      "Sorry, I couldn't connect to the assistant. Please try again.",
+      "bot"
+    );
+
+  } finally {
+    chatSend.disabled = false;
+    chatInput.disabled = false;
+    chatInput.focus();
   }
+}
 
   const quickReplyQuestions = [
     "What is the training program?",

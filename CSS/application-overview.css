@@ -46,7 +46,6 @@ textarea{
     position:relative;
 }
 
-/* Make the sidebar and topbar match the other admin pages exactly */
 .sidebar,
 .sidebar *,
 .topbar,
@@ -54,7 +53,7 @@ textarea{
     font-family:Arial, sans-serif;
 }
 
-/* ================= SIDEBAR (off-canvas drawer) ================= */
+/* ================= SIDEBAR  ================= */
 
 .sidebar{
     position:fixed;
@@ -111,7 +110,6 @@ textarea{
     background:rgba(255,255,255,.3);
 }
 
-/* Dark backdrop behind the drawer */
 
 .sidebar-overlay{
     position:fixed;
@@ -218,7 +216,6 @@ textarea{
     background:rgba(255,255,255,.28);
 }
 
-/* This logo lives in the topbar — only shown while the drawer mode is active (small screens) */
 
 .topbar-logo{
     height:60px;
@@ -1224,8 +1221,7 @@ textarea{
 
 /* ================= Responsive ================= */
 
-/* Desktop: sidebar stays permanently visible like before,
-   no hamburger, no overlay, no duplicate topbar logo */
+
 @media (min-width: 901px) {
   .sidebar {
     transform: translateX(0);

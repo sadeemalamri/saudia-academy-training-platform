@@ -47,8 +47,8 @@ const modalOpenings =
 const modalSkills =
   document.getElementById("modalSkills");
 
-/* ================= Sidebar drawer (hamburger open/close) ================= */
-/* Same pattern as student-dashboard.js / your-plan.js */
+/* ================= Sidebar drawer ================= */
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");

@@ -8,7 +8,7 @@
 }
 
 html {
-  -webkit-text-size-adjust: 100%; /* يمنع تكبير النص التلقائي بالموبايل */
+  -webkit-text-size-adjust: 100%; 
   text-size-adjust: 100%;
   scroll-behavior: smooth;
 }
@@ -17,18 +17,18 @@ body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased; /* خطوط أنعم على ماك/آيفون */
+  -webkit-font-smoothing: antialiased; 
   text-rendering: optimizeSpeed;
 }
 
 img, picture, video, canvas, svg {
   display: block;
-  max-width: 100%; /* يمنع الصور تكسر التصميم بالشاشات الصغيرة */
+  max-width: 100%;  
   height: auto;
 }
 
 input, button, textarea, select {
-  font: inherit; /* يخلي عناصر الفورم تورث نفس الخط، مو خط المتصفح الافتراضي */
+  font: inherit; 
   color: inherit;
 }
 
@@ -49,16 +49,7 @@ table {
   border-collapse: collapse;
   width: 100%;
 }
-/* =====================================================================
-   FIX: Disable the browser's elastic "rubber-band" overscroll bounce.
-   On trackpads (common on laptops, especially in Edge/Chrome on
-   Windows), scrolling past the top/bottom of the page triggers a
-   bounce animation that can make position:fixed elements (like the
-   sidebar) appear to jump or shake for a split second. This does not
-   happen with a mouse wheel or on touch phones, which explains why it
-   only shows up on laptop trackpads. Add this to admin-dashboard.css
-   (or better, to reset.css so every page benefits).
-   ===================================================================== */
+
 
 html, body {
   overscroll-behavior-y: none;

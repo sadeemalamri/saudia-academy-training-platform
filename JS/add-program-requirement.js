@@ -15,7 +15,7 @@ async function loadAdminName() {
 
 loadAdminName();
 
-/* ================= Edit mode: is there a program id in the URL? ================= */
+/* ================= Edit mode ================= */
 
 const urlParams = new URLSearchParams(window.location.search);
 const editingProgramId = urlParams.get("id");
@@ -57,10 +57,7 @@ const skillsCount =
 const currentYear =
   new Date().getFullYear();
 
-/* ================= English-letters-only pattern ================= */
-/* Same style used across the project: must start with a letter,
-   and only contain valid English characters — one single message,
-   no separate "Arabic not allowed" step. */
+
 
 const englishTextPattern =
   /^[A-Za-z][A-Za-z0-9\s+#.&/()'-]*$/;
@@ -105,9 +102,6 @@ function createSkillRow(skillValue = "") {
 
   skillsContainer.appendChild(skillRow);
 
-  /* Same helper pattern as the rest of the project: only apply the
-     custom rule once the field is non-empty, so an empty field still
-     shows the plain native "Please fill out this field." message. */
   skillInput.addEventListener(
     "input",
     () => {
@@ -221,9 +215,6 @@ otherProgramTitle.addEventListener(
 );
 
 /* ================= Program Title Validation ================= */
-/* Same pattern as Major/Name elsewhere: empty -> let the native
-   "Please fill out this field." bubble handle it. Non-empty -> one
-   single message if it doesn't match the allowed pattern. */
 
 function validateProgramTitle() {
   if (!programTitle.checkValidity()) {
@@ -438,8 +429,6 @@ async function submitProgram(event) {
 }
 
 /* ================= Immediate Validation ================= */
-/* Same helper pattern as the rest of the project: only apply the
-   custom rule once the field is non-empty. */
 
 programTitle.addEventListener(
   "change",

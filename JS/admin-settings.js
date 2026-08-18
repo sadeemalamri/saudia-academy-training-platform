@@ -161,7 +161,6 @@ function validateFullName(input, report = false) {
 function validatePhone(input, report = false) {
   const value = input.value.trim();
 
-  // Phone is optional, but if entered it must follow the project format.
   if (!value) {
     input.setCustomValidity("");
   } else if (!phonePattern.test(value)) {
@@ -242,7 +241,6 @@ async function saveProfile(event) {
 
     if (profileError) throw profileError;
 
-    // Keep Auth metadata in sync as a safe fallback for pages that read it.
     const { error: metadataError } = await sb.auth.updateUser({
       data: { full_name: fullName },
     });
@@ -432,8 +430,6 @@ async function updatePassword(event) {
       throw new Error("Your session has expired. Please log in again.");
     }
 
-    // Same flow used on the student Settings page:
-    // first verify the current password, then update the real Auth password.
     const { error: signInError } = await sb.auth.signInWithPassword({
       email: user.email,
       password: currentPassword.value,

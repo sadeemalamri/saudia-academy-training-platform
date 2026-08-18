@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* ================= CHAT WINDOW ================= */
-/* Loaded together with styles.css — only adds what's needed for the
-   full chatbot popup (the floating bubble/button already exist there). */
+
 
 .chat-window{
   display:none;

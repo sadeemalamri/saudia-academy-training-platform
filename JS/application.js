@@ -1,7 +1,3 @@
-// ===============================
-// Show / Hide Other City Field
-// ===============================
-
 const citySelect = document.getElementById("city");
 const otherCityField = document.getElementById("otherCityField");
 const otherCity = document.getElementById("otherCity");
@@ -20,14 +16,6 @@ citySelect.addEventListener("change", function () {
 
 });
 
-// ===============================
-// Custom validation rules
-// (all use the browser's native validation bubble — same one as
-//  "Please fill out this field." — but with our own message)
-// ===============================
-
-// Helper: only apply the custom rule once the field is non-empty,
-// so an empty field still shows the plain native "required" message.
 function addValidator(input, testFn, message) {
 
     input.addEventListener("input", () => {
@@ -42,8 +30,6 @@ function addValidator(input, testFn, message) {
     });
 
 }
-
-// ---- First / Last Name / Other City: must start with a letter, English letters only ----
 
 const namePattern = /^[A-Za-z][A-Za-z\s]*$/;
 
@@ -68,11 +54,8 @@ addValidator(
     "City must start with a letter and contain English letters only."
 );
 
-// ---- National ID: exactly 10 digits, numbers only ----
-
 const nationalId = document.getElementById("nationalId");
 
-// Strip any non-digit character immediately, and hard-limit to 10 digits (even on paste)
 nationalId.addEventListener("input", () => {
 
     nationalId.value = nationalId.value
@@ -87,14 +70,12 @@ addValidator(
     "National ID must be exactly 10 digits, numbers only."
 );
 
-// ---- Mobile Number: 12 digits total, must start with 966 (966 + 9-digit number) ----
 
 const mobile = document.getElementById("mobile");
 const mobilePrefix = "966";
 
 mobile.addEventListener("input", () => {
 
-    // Hard-block anything beyond 12 digits, even on paste, and strip non-digit characters
     mobile.value = mobile.value
         .replace(/\D/g, "")
         .slice(0, 12);
@@ -106,9 +87,6 @@ mobile.addEventListener("input", () => {
         return;
     }
 
-    // Check whether what's typed so far could still become a valid "966..." number.
-    // Catches a wrong start immediately (e.g. typing "5" first), not just after
-    // the full number is done.
     const stillMatchesPrefix =
         mobilePrefix.startsWith(value) ||
         value.startsWith(mobilePrefix);
@@ -123,7 +101,6 @@ mobile.addEventListener("input", () => {
         return;
     }
 
-    // Once the prefix is correct, check the full 12-digit rule
     if (!/^966[0-9]{9}$/.test(value)) {
 
         mobile.setCustomValidity(
@@ -138,8 +115,6 @@ mobile.addEventListener("input", () => {
 
 });
 
-// ---- Email: English characters only (no Arabic) ----
-
 const email = document.getElementById("email");
 
 addValidator(
@@ -148,9 +123,6 @@ addValidator(
     "Please enter a valid email address using English characters only."
 );
 
-// ===============================
-// Password validation
-// ===============================
 
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
@@ -164,7 +136,6 @@ addValidator(
     "Password must be at least 8 characters and include an uppercase letter, a lowercase letter, and a number."
 );
 
-// Check whether both passwords match
 function validatePasswordMatch() {
 
     if (confirmPassword.value === "") {
@@ -188,21 +159,24 @@ function validatePasswordMatch() {
 
 }
 
-password.addEventListener("input", validatePasswordMatch);
+password.addEventListener(
+    "input",
+    validatePasswordMatch
+);
 
-confirmPassword.addEventListener("input", () => {
+confirmPassword.addEventListener(
+    "input",
+    () => {
 
-    validatePasswordMatch();
+        validatePasswordMatch();
 
-    if (!confirmPassword.checkValidity()) {
-        confirmPassword.reportValidity();
+        if (!confirmPassword.checkValidity()) {
+            confirmPassword.reportValidity();
+        }
+
     }
+);
 
-});
-
-// ===============================
-// Show / Hide Password
-// ===============================
 
 const togglePassword =
     document.getElementById("togglePassword");
@@ -234,50 +208,64 @@ function togglePasswordVisibility(input, icon) {
 
 }
 
-togglePassword.addEventListener("click", () => {
+togglePassword.addEventListener(
+    "click",
+    () => {
 
-    togglePasswordVisibility(
-        password,
-        togglePassword
-    );
-
-});
-
-toggleConfirmPassword.addEventListener("click", () => {
-
-    togglePasswordVisibility(
-        confirmPassword,
-        toggleConfirmPassword
-    );
-
-});
-
-// ---- Date of Birth: cannot be in the future ----
-
-const dobInput = document.getElementById("dob");
-const today = new Date().toISOString().split("T")[0];
-
-dobInput.setAttribute("max", today); // blocks future dates in the picker itself
-
-dobInput.addEventListener("input", () => {
-
-    if (dobInput.value && dobInput.value > today) {
-
-        dobInput.setCustomValidity(
-            "Date of birth cannot be in the future."
+        togglePasswordVisibility(
+            password,
+            togglePassword
         );
 
-    } else {
+    }
+);
 
-        dobInput.setCustomValidity("");
+toggleConfirmPassword.addEventListener(
+    "click",
+    () => {
+
+        togglePasswordVisibility(
+            confirmPassword,
+            toggleConfirmPassword
+        );
 
     }
+);
 
-});
 
-// ===============================
-// Require all fields before moving to the next step
-// ===============================
+const dobInput = document.getElementById("dob");
+const today =
+    new Date()
+        .toISOString()
+        .split("T")[0];
+
+dobInput.setAttribute(
+    "max",
+    today
+);
+
+dobInput.addEventListener(
+    "input",
+    () => {
+
+        if (
+            dobInput.value &&
+            dobInput.value > today
+        ) {
+
+            dobInput.setCustomValidity(
+                "Date of birth cannot be in the future."
+            );
+
+        } else {
+
+            dobInput.setCustomValidity("");
+
+        }
+
+    }
+);
+
 
 const personalForm =
     document.getElementById("personalForm");
@@ -285,65 +273,102 @@ const personalForm =
 const nextBtn =
     document.getElementById("nextBtn");
 
-const signupError = document.getElementById("signupError");
+const signupError =
+    document.getElementById("signupError");
 
-const signupErrorText = document.getElementById("signupErrorText");
-const signupLogoutLink = document.getElementById("signupLogoutLink");
+const signupErrorText =
+    document.getElementById("signupErrorText");
 
-function showSignupError(message, showLogoutLink = false) {
-    signupErrorText.textContent = message;
-    signupError.style.display = "block";
-    signupLogoutLink.style.display = showLogoutLink ? "inline" : "none";
+const signupLogoutLink =
+    document.getElementById("signupLogoutLink");
+
+
+function showSignupError(
+    message,
+    showLogoutLink = false
+) {
+
+    if (signupErrorText) {
+        signupErrorText.textContent =
+            message;
+    }
+
+    if (signupError) {
+        signupError.style.display =
+            "block";
+    }
+
+    if (signupLogoutLink) {
+        signupLogoutLink.style.display =
+            showLogoutLink
+                ? "inline"
+                : "none";
+    }
+
 }
+
 
 if (signupLogoutLink) {
-    signupLogoutLink.addEventListener("click", async (e) => {
-        e.preventDefault();
-        await sb.auth.signOut();
-        window.location.reload();
-    });
+
+    signupLogoutLink.addEventListener(
+        "click",
+        async (e) => {
+
+            e.preventDefault();
+
+            await sb.auth.signOut();
+
+            window.location.reload();
+
+        }
+    );
+
 }
 
-// ===============================
-// Warn immediately on page load if someone is already logged in —
-// don't wait until they've filled the whole form to find out.
-// ===============================
 
-(async function warnIfAlreadyLoggedIn() {
-    const { data: { session } } = await sb.auth.getSession();
-
-    if (session) {
-        showSignupError(
-            `You're currently logged in as ${session.user.email}.`,
-            true
-        );
-        nextBtn.disabled = true;
-    }
-})();
-
-// ===============================
-// Restore saved Step 1 data
-// ===============================
+// ========================================
+// Restore Step 1 data
+// ========================================
 
 const savedStep1 = JSON.parse(
-    sessionStorage.getItem("wizard_step1") || "{}"
+    sessionStorage.getItem(
+        "wizard_step1"
+    ) || "{}"
 );
 
-if (Object.keys(savedStep1).length > 0) {
 
-    firstName.value = savedStep1.first_name || "";
-    lastName.value = savedStep1.last_name || "";
-    nationalId.value = savedStep1.national_id || "";
-    email.value = savedStep1.email || "";
-    mobile.value = savedStep1.mobile || "";
-    dobInput.value = savedStep1.dob || "";
-    citySelect.value = savedStep1.city || "";
+if (
+    Object.keys(savedStep1).length > 0
+) {
+
+    firstName.value =
+        savedStep1.first_name || "";
+
+    lastName.value =
+        savedStep1.last_name || "";
+
+    nationalId.value =
+        savedStep1.national_id || "";
+
+    email.value =
+        savedStep1.email || "";
+
+    mobile.value =
+        savedStep1.mobile || "";
+
+    dobInput.value =
+        savedStep1.dob || "";
+
+    citySelect.value =
+        savedStep1.city || "";
+
 
     if (savedStep1.gender) {
 
-        const genderInput = personalForm.querySelector(
-            `input[name="gender"][value="${savedStep1.gender}"]`
-        );
+        const genderInput =
+            personalForm.querySelector(
+                `input[name="gender"][value="${savedStep1.gender}"]`
+            );
 
         if (genderInput) {
             genderInput.checked = true;
@@ -351,133 +376,553 @@ if (Object.keys(savedStep1).length > 0) {
 
     }
 
-    if (savedStep1.city === "Other") {
 
-        otherCityField.style.display = "flex";
-        otherCity.required = true;
-        otherCity.value = savedStep1.other_city || "";
+    if (
+        savedStep1.city === "Other"
+    ) {
+
+        otherCityField.style.display =
+            "flex";
+
+        otherCity.required =
+            true;
+
+        otherCity.value =
+            savedStep1.other_city || "";
 
     } else {
 
-        otherCityField.style.display = "none";
-        otherCity.required = false;
+        otherCityField.style.display =
+            "none";
+
+        otherCity.required =
+            false;
 
     }
 
 }
 
-nextBtn.addEventListener("click", async () => {
 
-    validatePasswordMatch();
+// ========================================
+// Check if user returned with same account
+// ========================================
 
-    if (!personalForm.checkValidity()) {
+let returningWithSameAccount =
+    false;
 
-        personalForm.reportValidity();
+
+async function checkReturningAccount() {
+
+    const {
+        data: { session }
+    } =
+        await sb.auth.getSession();
+
+
+    if (!session) {
         return;
-
     }
 
-    signupError.style.display = "none";
-    nextBtn.disabled = true;
-    nextBtn.querySelector("span").textContent = "Please wait...";
 
-    // ---- 1) Create the auth account. If a session already exists (e.g.
-    //         the admin forgot to log out first), block instead of
-    //         silently reusing that account — this used to overwrite
-    //         whoever was logged in with the new person's data. ----
+    const loggedInEmail =
+        session.user.email
+            ?.trim()
+            .toLowerCase();
 
-    const { data: { session: existingSession } } = await sb.auth.getSession();
 
-    if (existingSession) {
-        showSignupError(
-            `You're currently logged in as ${existingSession.user.email}.`,
-            true
+    const savedEmail =
+        savedStep1.email
+            ?.trim()
+            .toLowerCase();
+
+
+    if (
+        savedEmail &&
+        loggedInEmail === savedEmail
+    ) {
+
+        returningWithSameAccount =
+            true;
+
+
+        password.required =
+            false;
+
+        confirmPassword.required =
+            false;
+
+
+        password.value =
+            "";
+
+        confirmPassword.value =
+            "";
+
+
+        password.setCustomValidity(
+            ""
         );
-        nextBtn.disabled = false;
-        nextBtn.querySelector("span").textContent = "Next";
-        return;
-    }
-    const normalizedEmail =
-        email.value.trim().toLowerCase();
 
-    const { data, error } = await sb.auth.signUp({
-        email: normalizedEmail,
-        password: password.value,
-        options: {
-            data: {
-                full_name: `${firstName.value.trim()} ${lastName.value.trim()}`,
-            },
-        },
-    });
-
-    if (error) {
-        showSignupError(
-            error.message.includes("already registered")
-                ? "This email is already registered. Please log in instead."
-                : error.message
+        confirmPassword.setCustomValidity(
+            ""
         );
-        nextBtn.disabled = false;
-        nextBtn.querySelector("span").textContent = "Next";
-        return;
-    }
 
-    // If Supabase requires email confirmation, signUp() succeeds but
-    // returns no session — the student can't continue the wizard yet.
-    if (!data.session) {
-        showSignupError(
-            "Account created! Please check your email and confirm your address before continuing, then log in from the Login page."
-        );
-        nextBtn.disabled = false;
-        nextBtn.querySelector("span").textContent = "Next";
-        return;
-    }
 
-    const currentUser = data.user;
+        password.placeholder =
+            "Account already created";
 
-    // ---- 2) Save the personal info collected here straight to the
-    //         student's profile row too (phone, dob, gender, national_id,
-    //         city already exist as real profile fields, not just
-    //         application-specific ones). ----
-    if (currentUser) {
+        confirmPassword.placeholder =
+            "Account already created";
 
-        const { error: profileError } = await sb
-            .from("profiles")
-            .update({
-                phone: mobile.value.trim(),
-                dob: dobInput.value,
-                gender: personalForm.querySelector('input[name="gender"]:checked')?.value || null,
-                national_id: nationalId.value.trim(),
-                city: citySelect.value,
-                other_city: citySelect.value === "Other" ? otherCity.value.trim() : null,
-            })
-            .eq("id", currentUser.id);
 
-        if (profileError) {
-            console.error("Failed to update profile:", profileError);
-            // Not fatal — the same data is also stashed in sessionStorage
-            // below and will still reach `applications` at the end.
+        if (signupError) {
+
+            signupError.style.display =
+                "none";
+        }
+
+
+        if (nextBtn) {
+
+            nextBtn.disabled =
+                false;
         }
 
     }
 
-    // ---- 3) Stash step 1 data in sessionStorage so later steps
-    //         (academic, documents, review) can build the final
-    //         `applications` row without saving anything to the
-    //         database yet. Never store the password. ----
+}
+
+
+checkReturningAccount();
+
+
+// ========================================
+// Save Step 1
+// ========================================
+
+function saveStep1Data(
+    normalizedEmail
+) {
+
     const step1Data = {
-        first_name: firstName.value.trim(),
-        last_name: lastName.value.trim(),
-        national_id: nationalId.value.trim(),
-        mobile: mobile.value.trim(),
-        dob: dobInput.value,
-        gender: personalForm.querySelector('input[name="gender"]:checked')?.value || "",
-        city: citySelect.value,
-        other_city: citySelect.value === "Other" ? otherCity.value.trim() : null,
-        email: normalizedEmail,
+
+        first_name:
+            firstName.value.trim(),
+
+        last_name:
+            lastName.value.trim(),
+
+        national_id:
+            nationalId.value.trim(),
+
+        mobile:
+            mobile.value.trim(),
+
+        dob:
+            dobInput.value,
+
+        gender:
+            personalForm.querySelector(
+                'input[name="gender"]:checked'
+            )?.value || "",
+
+        city:
+            citySelect.value,
+
+        other_city:
+            citySelect.value === "Other"
+                ? otherCity.value.trim()
+                : null,
+
+        email:
+            normalizedEmail
+
     };
 
-    sessionStorage.setItem("wizard_step1", JSON.stringify(step1Data));
 
-    window.location.href = "academic.html";
+    sessionStorage.setItem(
+        "wizard_step1",
+        JSON.stringify(step1Data)
+    );
 
-});
+}
+
+
+// ========================================
+// Next Button
+// ========================================
+
+nextBtn.addEventListener(
+    "click",
+    async () => {
+
+        if (
+            !returningWithSameAccount
+        ) {
+
+            validatePasswordMatch();
+        }
+
+
+        if (
+            !personalForm.checkValidity()
+        ) {
+
+            personalForm.reportValidity();
+            return;
+
+        }
+
+
+        if (signupError) {
+
+            signupError.style.display =
+                "none";
+        }
+
+
+        nextBtn.disabled =
+            true;
+
+
+        const nextText =
+            nextBtn.querySelector(
+                "span"
+            );
+
+
+        if (nextText) {
+
+            nextText.textContent =
+                "Please wait...";
+        }
+
+
+        const normalizedEmail =
+            email.value
+                .trim()
+                .toLowerCase();
+
+
+        // ========================================
+        // Check current Supabase session
+        // ========================================
+
+        const {
+            data: {
+                session:
+                    existingSession
+            }
+        } =
+            await sb.auth.getSession();
+
+
+        if (existingSession) {
+
+            const loggedInEmail =
+                existingSession.user.email
+                    ?.trim()
+                    .toLowerCase();
+
+
+            if (
+                loggedInEmail ===
+                normalizedEmail
+            ) {
+
+                saveStep1Data(
+                    normalizedEmail
+                );
+
+
+                window.location.href =
+                    "academic.html";
+
+                return;
+
+            }
+
+
+            showSignupError(
+                `You're currently logged in as ${existingSession.user.email}.`,
+                true
+            );
+
+
+            nextBtn.disabled =
+                false;
+
+
+            if (nextText) {
+
+                nextText.textContent =
+                    "Next";
+            }
+
+
+            return;
+        }
+
+
+        // ========================================
+        // Try to create account
+        // ========================================
+
+        const {
+            data,
+            error
+        } =
+            await sb.auth.signUp({
+
+                email:
+                    normalizedEmail,
+
+                password:
+                    password.value,
+
+                options: {
+
+                    data: {
+
+                        full_name:
+                            `${firstName.value.trim()} ${lastName.value.trim()}`
+
+                    }
+
+                }
+
+            });
+
+
+        // ========================================
+        // Email already exists
+        // Try logging in with same password
+        // ========================================
+
+        if (error) {
+
+            const alreadyRegistered =
+                error.message
+                    .toLowerCase()
+                    .includes(
+                        "already"
+                    );
+
+
+            if (alreadyRegistered) {
+
+                const {
+                    data:
+                        signInData,
+
+                    error:
+                        signInError
+                } =
+                    await sb.auth
+                        .signInWithPassword({
+
+                            email:
+                                normalizedEmail,
+
+                            password:
+                                password.value
+
+                        });
+
+
+                if (
+                    !signInError &&
+                    signInData.user
+                ) {
+
+                    const currentUser =
+                        signInData.user;
+
+
+                    const {
+                        error:
+                            profileError
+                    } =
+                        await sb
+                            .from(
+                                "profiles"
+                            )
+                            .update({
+
+                                phone:
+                                    mobile.value.trim(),
+
+                                dob:
+                                    dobInput.value,
+
+                                gender:
+                                    personalForm.querySelector(
+                                        'input[name="gender"]:checked'
+                                    )?.value || null,
+
+                                national_id:
+                                    nationalId.value.trim(),
+
+                                city:
+                                    citySelect.value,
+
+                                other_city:
+                                    citySelect.value === "Other"
+                                        ? otherCity.value.trim()
+                                        : null
+
+                            })
+                            .eq(
+                                "id",
+                                currentUser.id
+                            );
+
+
+                    if (profileError) {
+
+                        console.error(
+                            "Failed to update profile:",
+                            profileError
+                        );
+
+                    }
+
+
+                    saveStep1Data(
+                        normalizedEmail
+                    );
+
+
+                    window.location.href =
+                        "academic.html";
+
+
+                    return;
+                }
+
+
+                showSignupError(
+                    "This email already has an account. Please enter the same password you used before, or log in."
+                );
+
+            } else {
+
+                showSignupError(
+                    error.message
+                );
+
+            }
+
+
+            nextBtn.disabled =
+                false;
+
+
+            if (nextText) {
+
+                nextText.textContent =
+                    "Next";
+            }
+
+
+            return;
+        }
+
+
+        // ========================================
+        // Email confirmation required
+        // ========================================
+
+        if (!data.session) {
+
+            showSignupError(
+                "Account created! Please check your email and confirm your address before continuing, then log in from the Login page."
+            );
+
+
+            nextBtn.disabled =
+                false;
+
+
+            if (nextText) {
+
+                nextText.textContent =
+                    "Next";
+            }
+
+
+            return;
+        }
+
+
+        // ========================================
+        // New account successfully created
+        // ========================================
+
+        const currentUser =
+            data.user;
+
+
+        if (currentUser) {
+
+            const {
+                error:
+                    profileError
+            } =
+                await sb
+                    .from(
+                        "profiles"
+                    )
+                    .update({
+
+                        phone:
+                            mobile.value.trim(),
+
+                        dob:
+                            dobInput.value,
+
+                        gender:
+                            personalForm.querySelector(
+                                'input[name="gender"]:checked'
+                            )?.value || null,
+
+                        national_id:
+                            nationalId.value.trim(),
+
+                        city:
+                            citySelect.value,
+
+                        other_city:
+                            citySelect.value === "Other"
+                                ? otherCity.value.trim()
+                                : null
+
+                    })
+                    .eq(
+                        "id",
+                        currentUser.id
+                    );
+
+
+            if (profileError) {
+
+                console.error(
+                    "Failed to update profile:",
+                    profileError
+                );
+
+            }
+
+        }
+
+
+        saveStep1Data(
+            normalizedEmail
+        );
+
+
+        window.location.href =
+            "academic.html";
+
+    }
+);

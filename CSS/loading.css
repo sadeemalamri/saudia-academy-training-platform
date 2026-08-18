@@ -14,11 +14,6 @@ body{
     background:#ffffff;
 }
 
-/* =========================
-   Main Screen
-   (was a fixed 1280x720 box — now fills the actual browser
-   window at any size, so nothing gets cropped or letterboxed)
-========================= */
 
 .loading-screen{
 
@@ -94,12 +89,6 @@ body{
 
 }
 
-/* =========================
-   Background Images
-   (all sizes/positions converted from the original fixed px
-   values to vw/% equivalents, based on the original 1280x720 canvas,
-   so they keep the same proportions at any screen size)
-========================= */
 
 .academy-img{
 
@@ -290,11 +279,7 @@ body{
 
 }
 
-/* =========================
-   Small phones — decorative background elements can get a
-   little too bold/crowded at very narrow widths, so tone them
-   down slightly instead of shrinking every single value further
-========================= */
+
 
 @media (max-width:480px){
 

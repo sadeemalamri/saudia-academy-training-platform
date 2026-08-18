@@ -44,8 +44,7 @@ textarea {
   position: relative;
 }
 
-/* ================= SIDEBAR (off-canvas drawer) — matches the
-   Supervisors page exactly ================= */
+/* ================= SIDEBAR ================= */
 
 .sidebar {
   position: fixed;
@@ -164,7 +163,7 @@ textarea {
   background: var(--page-bg);
 }
 
-/* ================= Topbar — matches the Supervisors page exactly ================= */
+/* ================= Topbar  ================= */
 
 .topbar {
   position: sticky;
@@ -271,7 +270,7 @@ textarea {
   line-height: 1.6;
 }
 
-/* ================= Settings Card (matches student's Profile Card) ================= */
+/* ================= Settings Card  ================= */
 
 .settings-card {
   width: 86%;
@@ -321,7 +320,7 @@ textarea {
   line-height: 1.4;
 }
 
-/* ================= Form Side (matches student's Profile Right) ================= */
+/* ================= Form Side ================= */
 
 .settings-content {
   flex: 1;

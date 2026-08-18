@@ -443,10 +443,7 @@ function getDisplayName(app) {
   );
 }
 
-/*
-  Supabase may return the related analysis
-  as one object or as an array.
-*/
+
 function getAnalysis(app) {
   const relation =
     app.ai_skill_analysis;

@@ -1,10 +1,3 @@
-// ======================================================
-// Application Form — Step 2: Academic Information
-// ======================================================
-
-// ===============================
-// Guard: user must be logged in
-// ===============================
 
 requireAuth();
 
@@ -33,8 +26,7 @@ const otherProgramField =
 const otherProgram =
     document.getElementById("otherProgram");
 
-// Keeps id -> title so saveStep2Data() can store the program's title as
-// the student's "major" without needing another query.
+
 const programTitles = {};
 
 const studentLevel =
@@ -368,10 +360,7 @@ function getSavedStep2Data() {
 // ===============================
 
 async function restoreStep2Data() {
-    /*
-        Programs must load first because the program
-        select options come from Supabase.
-    */
+  
     await loadPrograms();
 
     const savedStep2 =
@@ -486,16 +475,9 @@ function saveStep2Data() {
     );
 }
 
-// ===============================
-// Previous Button
-// Save before going back
-// ===============================
 
 prevBtn.addEventListener("click", () => {
-    /*
-        Save whatever the user entered before returning
-        to Step 1, even if some fields are incomplete.
-    */
+ 
     saveStep2Data();
 
     window.location.href =
@@ -522,11 +504,6 @@ nextBtn.addEventListener("click", () => {
     window.location.href =
         "documents.html";
 });
-
-// ===============================
-// Save Changes While Typing
-// This gives extra protection if the user navigates away
-// ===============================
 
 academicForm.addEventListener(
     "input",

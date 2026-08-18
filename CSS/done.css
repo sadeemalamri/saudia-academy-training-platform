@@ -145,7 +145,6 @@ body{
   100%{ transform:scale(1.35); opacity:0; }
 }
 
-/* ---- little confetti dots around the badge ---- */
 
 .confetti-dot{
   position:absolute;

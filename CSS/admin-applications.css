@@ -196,7 +196,6 @@ body {
   background: rgba(255,255,255,.28);
 }
 
-/* This logo lives in the topbar — it is NEVER hidden by the menu toggle */
 
 .topbar-logo {
   height: 60px;
@@ -676,8 +675,7 @@ body {
 
 /* ================= Responsive ================= */
 
-/* Desktop: sidebar stays permanently visible like before,
-   no hamburger, no overlay, no duplicate topbar logo */
+
 @media (min-width: 901px) {
   .sidebar {
     transform: translateX(0);
