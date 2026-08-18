@@ -41,13 +41,14 @@ assign supervisors, manage jobs).
 ## Project Structure
 
 ```
-Project Analysis AI/
+saudia-academy-training-platform/
 ├── HTML/            # One HTML page per screen (login, dashboards, forms, etc.)
 ├── CSS/             # One stylesheet per page/component
 ├── JS/              # One script per page + shared Supabase client
 │   ├── config.example.js   # Template for your own Supabase credentials
 │   ├── config.js            # Your local credentials (git-ignored, not included)
-│   └── supabaseClient.js    # Shared Supabase client + auth helpers
+│   └── supabaseClient.js    # Shared Supabase client — reads from window.APP_CONFIG,
+│                             # never hardcode real credentials here
 ├── images/          # Static assets
 └── package.json
 ```
@@ -71,8 +72,8 @@ This is a static front-end project — no build step required.
 
 1. **Clone the repo**
    ```bash
-   git clone <this-repo-url>
-   cd "Project Analysis AI"
+   git clone https://github.com/sadeemalamri/saudia-academy-training-platform.git
+   cd saudia-academy-training-platform
    ```
 
 2. **Set up your Supabase credentials**
@@ -91,9 +92,16 @@ This is a static front-end project — no build step required.
        SUPABASE_ANON_KEY: "YOUR_ANON_PUBLIC_KEY"
      };
      ```
-   - `JS/config.js` is git-ignored on purpose — never commit real credentials.
+   - `JS/config.js` is git-ignored on purpose — **never commit real credentials.**
+     `JS/supabaseClient.js` only reads from `window.APP_CONFIG`; it should
+     never contain a real URL or key directly.
 
-3. **Run it locally**
+3. **Set up the database schema**
+
+   Run the SQL migrations in `supabase/migrations/` in order (0001, 0002, ...)
+   in your Supabase project's SQL Editor. See `supabase/README.md` for details.
+
+4. **Run it locally**
 
    Since this is static HTML/CSS/JS, any local static server works, e.g.:
    ```bash
@@ -101,14 +109,6 @@ This is a static front-end project — no build step required.
    ```
    or open `HTML/index.html` directly in your browser (some browser
    security settings may require a local server instead of `file://`).
-
-## Notes on the Supabase Setup
-
-This repo does **not** include the database schema (tables, RLS policies)
-used in the original deployment. To run this against your own Supabase
-project, you'll need to create tables such as `profiles`, `applications`,
-and related tables referenced in `JS/*.js`, along with matching Row Level
-Security (RLS) policies.
 
 ## License
 
